@@ -15,8 +15,7 @@
     <style>
         body{
             font-family: 'NanumSquare', sans-serif; color:#222; font-size:12px; line-height: 1.5; 
-        }
-        body{
+            padding-top: 70px;
             padding-bottom: 60px;
         }
         #weather1{
@@ -30,11 +29,14 @@
             background-color: rgb(87, 86, 86);
             color: white;
         }
+        .divider{
+            border: rgb(221, 221, 221) 0.5px solid;
+        }
     </style>
 </head>
 <body>
     <!-- 네비게이션바 -->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -50,9 +52,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                  <li><a href="#">Link</a></li>
-                </ul>            
+                    <li class="divider"></li>
+                    <li><a href="#">MY 스타일 <span class="sr-only">(current)</span></a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">환경설정</a></li>
+                    <li><a href="#">지역설정</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>         
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav><!--네비게이션 끝-->
