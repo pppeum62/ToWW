@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ToWW</title>
+
+        <link rel="stylesheet" href="./reset.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+    </head>
+    <style>
+        .signup-area { position: absolute; top: 50%; transform: translateY(-50%); }
+        .signup-area .signup-header { text-align: center; margin-bottom: 10px; }
+        .signup-area .signup { text-align: center; margin: 10vw; }
+        .signup-area .signup form { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+        .signup-area .signup span { display: flex; align-items: center; box-sizing: border-box; padding: 0 0 0 20px; width: 25vw; height: 6vh; background-color: #eee; font-weight: bold; border-top: 1.5px solid #ccc; }
+        .signup-area .signup span:nth-child(5) { margin-top: 6px; }
+        .signup-area .signup span:nth-child(1), .signup-area .signup span:nth-child(5){ border-top: none; }
+        .signup-area .signup input { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; border-top: 1.5px solid #ccc; }
+        .signup-area .signup input:nth-child(6) { margin-top: 6px; }
+        .signup-area .signup input:nth-child(2), .signup-area .signup input:nth-child(6) { border-top: none; }
+        .signup-area .signup .signup-btn { width: 70vw; height: 6vh; border: none; background-color: #eee; margin: 70px 0 0 0; padding: 0 10px;  }
+    </style>
+    <body>
+        <div class="signup-area">
+            <div class="signup-header">
+                <h1 class="title">회원가입</h1>
+            </div>
+            <div class="signup">
+                <form>
+                    <span>이름</span>
+                    <input type="text" placeholder="이름 입력하기">
+                    <span>지역</span>
+                    <input type="text" placeholder="지역 검색하기">
+
+                    <span>아이디</span>
+                    <input type="email" placeholder="abc1234@naver.com">
+                    <span>비밀번호</span>
+                    <input type="password" placeholder="비밀번호 입력하기">
+                    <span>비밀번호 확인</span>
+                    <input type="password" placeholder="비밀번호 재입력하기">
+
+                    <input type="submit" class="signup-btn" value="시작하기">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
