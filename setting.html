@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ToWW</title>
+
+        <!-- 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="./reset.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+    </head>
+    <style>
+        /* header */ 
+        .setting-area .setting-header { text-align: right; margin-bottom: 10px; background-color: #fff; width: 100vw; }
+        .setting-area .setting-header .title { font-weight: bold; margin: 30px 30px 0 0; }
+        .setting-area .setting-header .version { color: #ccc; margin-right: 30px; }
+
+        /* setting */
+        .setting .title-name { width: 100vw; background-color: #ddd; font-size: 16px; padding: 3vw 0 3vw 5vw; font-weight: bold; box-sizing: border-box; }
+        .setting .contents { width: 100vw; padding: 3vw 0 3vw 5vw; background-color: #fff; box-sizing: border-box; }
+        .setting .info .contents { border-bottom: 1px solid #ccc; }
+        .setting .info .contents .data { color: #bbb; float: right; margin-right: 10px; }
+        .setting .info .contents .icon { width: 17px; height: 17px; background-color: #bbb; float: right; margin-right: 30px; }
+    </style>
+    <body>
+        <div class="setting-area">
+            <div class="setting-header">
+                <h1 class="title">환경설정</h1>
+                <span class="version">버전 1.0.1-release.01</span>
+            </div>
+            <div class="setting">
+                <div class="inform">
+                    <div class="title-name">알림</div>
+                    <div class="contents">푸시 알림 받기</div>
+                </div>
+                <div class="info">
+                    <div class="title-name">내 정보</div>
+                    <div class="contents">내 코드 복사하기</div>
+                    <div class="contents">
+                        이메일
+                        <span class="icon"></span>
+                        <span class="data">abc1234@naver.com</span>
+                    </div>
+                    <div class="contents">
+                        비밀번호
+                        <span class="icon"></span>
+                        <span class="data">********</span>
+                    </div>
+                </div>
+                <div class="logout">
+                    <div class="title-name">로그아웃</div>
+                    <div class="contents">로그아웃</div>
+                </div>
+                <div class="leave">
+                    <div class="title-name">탈퇴하기</div>
+                    <div class="contents">탈퇴하기</div>
+                </div>
+            </div>
+        </div>
+        <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
