@@ -1,3 +1,8 @@
 # 🔥ToWW🔥
-> 개발 : 김수현, 오예은, 이기쁨 (미림여자정보과학고등학교 뉴미디어소프트웨어과) <br>
-> 디자인 : 이여원 (미림여자정보과학고등학교 뉴미디어디자인과)
+2020.04. - 2020.06.
+## Developer
+- [**Suhyeon Kim**](https://github.com/wander0220) / *Front-end Development*
+- [**Yeeun Oh**](https://github.com/ohyeeune) / *Android Development*
+- [**Gippeum Lee**](https://github.com/pppeum62) / *Front-end, Back-end Development*
+## Designer
+- Yeowon Lee / *Designer*
