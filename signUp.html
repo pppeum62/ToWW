@@ -17,6 +17,9 @@
         .signup-area .signup span:nth-child(5) { margin-top: 6px; }
         .signup-area .signup span:nth-child(1), .signup-area .signup span:nth-child(5){ border-top: none; }
         .signup-area .signup input { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; border-top: 1.5px solid #ccc; }
+        .signup-area .signup .search { position: relative; color: gray; font-weight: normal; box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; border-top: 1.5px solid #ccc; }
+        .signup-area .signup .search .search-img { cursor: pointer; width: 20px; height: 20px; position: absolute; right: 10px; background-color: #ccc; }
+        .signup-area .signup .search .search-img img { width: 100%; height: 100%; }
         .signup-area .signup input:nth-child(6) { margin-top: 6px; }
         .signup-area .signup input:nth-child(2), .signup-area .signup input:nth-child(6) { border-top: none; }
         .signup-area .signup .signup-btn { width: 70vw; height: 6vh; border: none; background-color: #eee; margin: 70px 0 0 0; padding: 0 10px;  }
@@ -31,8 +34,12 @@
                     <span>이름</span>
                     <input type="text" placeholder="이름 입력하기">
                     <span>지역</span>
-                    <input type="text" placeholder="지역 검색하기">
-
+                    <span class="search">
+                        지역 검색하기
+                        <div class="search-img">
+                            <a herf="#"><img src=""></a>
+                        </div>
+                    </span>
                     <span>아이디</span>
                     <input type="text" placeholder="아이디 입력하기">
                     <span>비밀번호</span>
