@@ -7,6 +7,9 @@
 
         <link rel="stylesheet" href="./reset.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
     <style>
         .signup-area { position: absolute; top: 50%; transform: translateY(-50%); }
@@ -17,12 +20,24 @@
         .signup-area .signup span:nth-child(5) { margin-top: 6px; }
         .signup-area .signup span:nth-child(1), .signup-area .signup span:nth-child(5){ border-top: none; }
         .signup-area .signup input { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; border-top: 1.5px solid #ccc; }
-        .signup-area .signup .search { position: relative; color: gray; font-weight: normal; box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; border-top: 1.5px solid #ccc; }
-        .signup-area .signup .search .search-img { cursor: pointer; width: 20px; height: 20px; position: absolute; right: 10px; background-color: #ccc; }
-        .signup-area .signup .search .search-img img { width: 100%; height: 100%; }
+        .signup-area .signup .search-title { height: 12vh; }
+        .signup-area .signup .search-area { position: relative; color: gray; font-weight: normal; box-sizing: border-box; width: 45vw; height: 12vh; border: none; background-color: #eee; padding: 0 10px; border-top: 1.5px solid #ccc; }
+        .signup-area .signup .search-area .search-img { cursor: pointer; width: 20px; height: 20px; position: absolute; right: 10px; background-color: #ccc; }
+        .signup-area .signup .search-area .search-img img { width: 100%; height: 100%; }
         .signup-area .signup input:nth-child(6) { margin-top: 6px; }
         .signup-area .signup input:nth-child(2), .signup-area .signup input:nth-child(6) { border-top: none; }
         .signup-area .signup .signup-btn { width: 70vw; height: 6vh; border: none; background-color: #eee; margin: 70px 0 0 0; padding: 0 10px;  }
+    
+        /* search */
+        .search { text-align: center; position: absolute; }
+        .search .select1 { margin-bottom: 5px; }
+        .search .select2 { margin-top: 5px; }
+
+        /* button */
+        .submit { text-align: center; margin-top: 100px; }
+        .submit .btn { background-color: #ddd; padding: 10px; border-radius: 20px; width: 150px; }
+
+        select { font-size: 15px; width: 150px; height: 28px; border-radius: 20px; padding: 5px; }
     </style>
     <body>
         <div class="signup-area">
@@ -33,11 +48,13 @@
                 <form>
                     <span>이름</span>
                     <input type="text" name="name" placeholder="이름 입력하기">
-                    <span>지역</span>
-                    <span class="search">
-                        지역 검색하기
-                        <div class="search-img">
-                            <a href="search.html"><img src=""></a>
+                    <span class="search-title">지역</span>
+                    <span class="search-area">
+                        <div class="search">
+                            <select name="" class="select1" id="s1">
+                                <option value="시/도">시/도</option>
+                            </select><br>
+                            <select name="" class="select2" id="s2"></select>
                         </div>
                     </span>
                     <span>아이디</span>
@@ -51,5 +68,11 @@
                 </form>
             </div>
         </div>
+
+        <script type="text/javascript" src="local.js"></script>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     </body>
 </html>
