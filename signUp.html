@@ -81,12 +81,12 @@
                 <h1 class="title">회원가입</h1>
             </div>
             <div class="signup">
-                <form method="POST" action="signUp.php">
+                <form method="POST" action="signUp.php" onsubmit="return signup()">
 
                     <!-- name-area start -->
                     <div class="name">
                         <span class="title-span">이름</span>
-                        <input type="text" class="content" name="name" placeholder="이름 입력하기">
+                        <input type="text" class="content" name="name" placeholder="이름 입력하기" required autocomplete="off">
                     </div>
                     <!-- name-area end -->
 
@@ -108,8 +108,9 @@
                     <div class="id">
                         <span class="title-span">아이디</span>
                         <div class="content">
-                            <input type="text" class="input-id" name="id" placeholder="아이디 입력하기">
-                            <input type="button" class="id-btn" value="확인">
+                            <input type="text" class="input-id" id="id" name="id" placeholder="아이디 입력하기" required autocomplete="off">
+                            <a href="javascript:check_ID()" class="id-btn">확인</a>
+                            <!--<input type="button" class="id-btn" value="확인">-->
                         </div>
                     </div>
                     <!-- id-area end -->
@@ -119,18 +120,18 @@
                     <!-- password-area start -->
                     <div class="pw">
                         <span class="title-span">비밀번호</span>
-                        <input type="password" class="reset content" name="pw" placeholder="비밀번호 입력하기">
+                        <input type="password" class="reset content" name="pw" id="pw" placeholder="비밀번호 입력하기" required autocomplete="off">
                     </div>
                     <!-- password-area end -->
 
                     <!-- password-check-area start -->
                     <div class="pw-ck">
                         <span class="title-span">비밀번호 확인</span>
-                        <input type="password" class="reset content" name="pw-ck" placeholder="비밀번호 재입력하기">
+                        <input type="password" class="reset content" name="pw-ck" id="pw_ck" placeholder="비밀번호 재입력하기" required autocomplete="off">
                     </div>
                     <!-- password-check-area end -->
                     
-                    <input type="submit" class="signup-btn" value="시작하기">
+                    <input type="submit" class="signup-btn" onclick="check_password()"; value="시작하기">
                 </form>
             </div>
         </div>
@@ -141,7 +142,7 @@
             <div class="input-area">
                 <form method="POST" action="id_check.php">
                     <div class="input-box">
-                        <input type="text" name="id-check" class="id-check" id="id_check" placeholder="아이디를 입력하세요">
+                        <input type="text" name="id-check" class="id-check" id="id_check" onkeydown="checked=false;" placeholder="아이디를 입력하세요">
                         <input type="button" class="check" value="확인">
                     </div>
                     <input type="button" value="아이디 사용하기" class="check-btn">
@@ -149,6 +150,40 @@
             </div>
         </div>
         <!-- id-check popup end -->
+
+        <script type="text/javascript">
+            var checked = false;
+
+            function check_ID() {
+                var id = document.getElementById('id').value;
+                if(id == '') {
+                    alert('아이디를 입력해주세요');
+
+                    return;
+                }
+                window.open('idCheck.php?id='+id, 'CheckWindow', 'width=500 height=120');
+
+                checked = true;
+            }
+
+            function check_password() {
+                var pw = document.getElementById('pw');
+                var pwck = document.getElementById('pw_ck');
+
+                if (pw.value != pwck.value) {
+                    pwck.value = '';
+                    pwck.placeholder = '다시 입력해주세요';
+                }
+            }
+
+            function signup() {
+                if(!checked) {
+                    alert("아이디 중복 확인을 해주세요");
+
+                    return false;
+                }
+            }
+        </script>
 
         <script type="text/javascript">
             //layer popup
