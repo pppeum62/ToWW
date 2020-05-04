@@ -15,31 +15,52 @@
         .signup-area { position: absolute; top: 50%; transform: translateY(-50%); }
         .signup-area .signup-header { text-align: center; margin-bottom: 10px; }
         .signup-area .signup { text-align: center; margin: 10vw; }
+
+        .signup-area .signup .title-span { display: flex; align-items: center; box-sizing: border-box; padding: 0 0 0 20px; width: 25vw; height: 6vh; background-color: #eee; font-weight: bold; }
+        .signup-area .signup .content { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; }
+
+        /* name */
+        .signup-area .signup .name { width: 70vw; height: 6vh; display: contents; }
+        .signup-area .signup .name .title-span { border-top-left-radius: 20px; }
+        .signup-area .signup .name .content { border-top-right-radius: 20px; }
+
+        /* local */
+        .signup-area .signup .local { width: 70vw; height: 12vh; display: contents; }
+        .signup-area .signup .local .title-span { height: 12vh; border-bottom-left-radius: 20px; border-top: 1px solid #ccc; }
+        .signup-area .signup .local .content { display: flex; align-items: center; height: 12vh; border-bottom-right-radius: 20px; border-top: 1px solid #ccc; }
+
+        /* id */
+        .signup-area .signup .id { width: 70vw; height: 6vh; display: contents; }
+        .signup-area .signup .id .title-span { margin-top: 6px; border-top-left-radius: 20px; }
+        .signup-area .signup .id .content { margin-top: 6px; border-top-right-radius: 20px; display: flex; align-items: center; }
+        .signup-area .signup .id .content .input-id { border: none; width: 30vw; background: none; }
+        .signup-area .signup .id .content .id-btn { border: none; background-color: #ccc; padding: 1px 6px; border-radius: 20px; }
+
+        /* pw */
+        .signup-area .signup .pw { width: 70vw; height: 6vh; display: contents; }
+        .signup-area .signup .pw .title-span { border-top: 1px solid #ccc; }
+        .signup-area .signup .pw .content { border-top: 1px solid #ccc; }
+
+        /* pw-ck */
+        .signup-area .signup .pw-ck { width: 70vw; height: 6vh; display: contents; }
+        .signup-area .signup .pw-ck .title-span { border-bottom-left-radius: 20px; border-top: 1px solid #ccc; }
+        .signup-area .signup .pw-ck .content { border-bottom-right-radius: 20px; border-top: 1px solid #ccc; }
+
         .signup-area .signup form { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
-        .signup-area .signup span { display: flex; align-items: center; box-sizing: border-box; padding: 0 0 0 20px; width: 25vw; height: 6vh; background-color: #eee; font-weight: bold; border-top: 1.5px solid #ccc; }
-        .signup-area .signup span:nth-child(5) { margin-top: 6px; }
-        .signup-area .signup span:nth-child(1), .signup-area .signup span:nth-child(5){ border-top: none; }
-        .signup-area .signup input { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; border-top: 1.5px solid #ccc; }
         .signup-area .signup input:focus { outline: none; }
-        .signup-area .signup .search-title { height: 12vh; }
-        .signup-area .signup .search-area { position: relative; color: gray; font-weight: normal; box-sizing: border-box; width: 45vw; height: 12vh; border: none; background-color: #eee; padding: 0 10px; border-top: 1.5px solid #ccc; }
-        .signup-area .signup .search-area .search-img { cursor: pointer; width: 20px; height: 20px; position: absolute; right: 10px; background-color: #ccc; }
-        .signup-area .signup .search-area .search-img img { width: 100%; height: 100%; }
-        .signup-area .signup input:nth-child(6) { margin-top: 6px; }
-        .signup-area .signup input:nth-child(2), .signup-area .signup input:nth-child(6) { border-top: none; }
-        .signup-area .signup .signup-btn { width: 70vw; height: 6vh; border: none; background-color: #eee; margin: 70px 0 0 0; padding: 0 10px;  }
-        .signup-area .signup .layer { color: gray; font-weight: normal; box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; margin-top: 6px; }
+        
+        /* signup-btn */
+        .signup-area .signup .signup-btn { width: 70vw; height: 6vh; border: none; background-color: #eee; margin: 70px 0 0 0; padding: 0 10px; border-radius: 20px; }
 
-        /* search */
+        /* local search */
         .search { text-align: center; position: absolute; }
-        .search .select1 { margin-bottom: 5px; }
-        .search .select2 { margin-top: 5px; }
+        .search .select1 { margin-bottom: 3px; }
+        .search .select2 { margin-top: 3px; }
 
-        /* button */
-        .submit { text-align: center; margin-top: 100px; }
-        .submit .btn { background-color: #ddd; padding: 10px; border-radius: 20px; width: 150px; }
+        select { font-size: 15px; width: 140px; height: 28px; border-radius: 20px; padding: 5px; }
 
-        select { font-size: 15px; width: 150px; height: 28px; border-radius: 20px; padding: 5px; }
+        /* layer */
+        .signup-area .signup .layer { color: gray; font-weight: normal; box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; margin-top: 6px; }
 
         /* layer popup */
         #layer { display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 30vh; width: 60vw; background-color: #fff; border: 3px solid #bbb; }
@@ -51,6 +72,8 @@
         #layer .id-check:focus { outline: none; }
         #layer .check { background-color: #ddd; border: none; border-radius: 20px; padding: 1px 6px; cursor: pointer; }
         #layer .check-btn { border: none; background-color: #ddd; width: 30vw; height: 5vh; border-radius: 20px; margin-top: 40px; }
+
+        .reset { font-family: '맑은 고딕'; letter-spacing: -1px; }
     </style>
     <body>
         <div class="signup-area">
@@ -58,25 +81,55 @@
                 <h1 class="title">회원가입</h1>
             </div>
             <div class="signup">
-                <form>
-                    <span>이름</span>
-                    <input type="text" name="name" placeholder="이름 입력하기">
-                    <span class="search-title">지역</span>
-                    <span class="search-area">
-                        <div class="search">
-                            <select name="" class="select1" id="s1">
-                                <option value="시/도">시/도</option>
-                            </select><br>
-                            <select name="" class="select2" id="s2"></select>
-                        </div>
-                    </span>
-                    <span>아이디</span>
-                    <span class="layer">아이디 입력하기</span>
-                    <span>비밀번호</span>
-                    <input type="password" name="password" placeholder="비밀번호 입력하기">
-                    <span>비밀번호 확인</span>
-                    <input type="password" name="password-check" placeholder="비밀번호 재입력하기">
+                <form method="POST" action="signUp.php">
 
+                    <!-- name-area start -->
+                    <div class="name">
+                        <span class="title-span">이름</span>
+                        <input type="text" class="content" name="name" placeholder="이름 입력하기">
+                    </div>
+                    <!-- name-area end -->
+
+                    <!-- local-area start -->
+                    <div class="local">
+                        <span class="search-title title-span">지역</span>
+                        <span class="search-area content">
+                            <div class="search">
+                                <select name="depth1" class="select1" id="s1">
+                                    <option value="시/도">시/도</option>
+                                </select><br>
+                                <select name="depth2" class="select2" id="s2"></select>
+                            </div>
+                        </span>
+                    </div>
+                    <!-- local-area end -->
+
+                    <!-- id-area start -->
+                    <div class="id">
+                        <span class="title-span">아이디</span>
+                        <div class="content">
+                            <input type="text" class="input-id" name="id" placeholder="아이디 입력하기">
+                            <input type="button" class="id-btn" value="확인">
+                        </div>
+                    </div>
+                    <!-- id-area end -->
+
+                    <!--<span class="layer" name="id">아이디 입력하기</span>-->
+
+                    <!-- password-area start -->
+                    <div class="pw">
+                        <span class="title-span">비밀번호</span>
+                        <input type="password" class="reset content" name="pw" placeholder="비밀번호 입력하기">
+                    </div>
+                    <!-- password-area end -->
+
+                    <!-- password-check-area start -->
+                    <div class="pw-ck">
+                        <span class="title-span">비밀번호 확인</span>
+                        <input type="password" class="reset content" name="pw-ck" placeholder="비밀번호 재입력하기">
+                    </div>
+                    <!-- password-check-area end -->
+                    
                     <input type="submit" class="signup-btn" value="시작하기">
                 </form>
             </div>
@@ -86,10 +139,10 @@
         <div id="layer">
             <a href="#" class="close">Close</a>
             <div class="input-area">
-                <form>
+                <form method="POST" action="id_check.php">
                     <div class="input-box">
                         <input type="text" name="id-check" class="id-check" id="id_check" placeholder="아이디를 입력하세요">
-                        <span class="check">확인</span>
+                        <input type="button" class="check" value="확인">
                     </div>
                     <input type="button" value="아이디 사용하기" class="check-btn">
                 </form>
@@ -98,13 +151,6 @@
         <!-- id-check popup end -->
 
         <script type="text/javascript">
-            //window popup
-            $(".window").click(function(){
-                //window.open("파일명", "팝업 이름", "옵션");
-                //옵션 : left, top, width, height, status, toolbar, location, menubar, scrollbars, fullscreen
-                window.open("popup.html", "popup", "width=800, height=559, left=50, top=50, scrollbars=0, menubar=0 toolbar=0");
-            });
-
             //layer popup
             $(".layer").click(function(event) {
                 event.preventDefault();
