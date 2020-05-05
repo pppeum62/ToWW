@@ -13,7 +13,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
     </head>
     <style>
-        body { padding-top: 50px; }
+        body { padding-top: 50px; background-color: #eee; }
 
         /* header */ 
         .header { text-align: right; margin: 30px 30px 10px; }
@@ -22,7 +22,7 @@
         .share { width: 30px; height: 30px; background-color: #ccc; float: right; margin-right: 30px; }
 
         /* profile */
-        .profile-area { width: 100vw; margin-top: 30px; border-bottom: 5px solid #ccc; } 
+        .profile-area { width: 100vw; margin-top: 30px; padding-bottom: 10px; } 
         .profile-area .profile-img { width: 100px; height: 100px; background-color: #ccc; border-radius: 50px; margin: auto; }
         .profile-area .profile-info { text-align: center; }
         .profile-area .profile-info .nickname { margin: 8px 0 3px; display: inline-block; }
@@ -33,7 +33,7 @@
         .profile-area .profile-info .follow { margin-bottom: 10px; }
 
         /* bookmark */
-        .bookmark-area { margin: 20px 10vw 10vw; }
+        .bookmark-area { padding: 20px 10vw 10vw; border-radius: 20px 20px 0 0; background-color: #fff; }
         .bookmark-area .bookmark-header { margin-bottom: 15px; }
         .bookmark-area .bookmark-header .title { margin-bottom: 5px; }
         .bookmark-area .bookmark-header .bookmark-menu ul { display: inline; }
@@ -86,6 +86,7 @@
             <div class="profile-img"></div>
             <div class="profile-info">
                 <span class="nickname">내 닉네임</span>
+                <!---
                 <div class="follow">
                     <ul>
                         <li class="following">
@@ -96,6 +97,7 @@
                         </li>
                     </ul>
                 </div>
+                -->
             </div>
         </div>
         <div class="bookmark-area">
