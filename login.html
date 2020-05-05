@@ -13,9 +13,12 @@
         .login-area .login-header { text-align: center; margin-bottom: 10px; }
         .login-area .login { text-align: center; }
         .login-area .login input { box-sizing: border-box; width: 65vw; height: 6vh; border: none; background-color: #eee; margin: 3px 0; padding: 0 0 0 20px; border-radius: 20px; }
+        .login-area .login input:focus { outline: none; }
+        .login-area .login .reset { font-family: '맑은 고딕'; letter-spacing: -1px; }
         .login-area .login .login-btn { margin-top: 20px; padding: unset; }
         .login-area .login-info { text-align: center; margin: 20px; }
-        .login-area .login-info li { position: relative; display: inline; }
+        .login-area .login-info li { position: relative; display: inline; cursor: pointer; }
+        .login-area .login-info li:hover { text-decoration: underline; }
         .login-area .login-info li:before { content:''; width: 1px; height: 12px; background: #999; position: absolute; left: 0; top: 0; }
         .login-area .login-info li:first-child:before{ width: 0; height: 0; }
         .login-area .login-info li span { padding: 8px; }
@@ -26,9 +29,9 @@
                 <h1 class="title">로그인</h1>
             </div>
             <div class="login">
-                <form>
-                    <input type="text" placeholder="아이디">
-                    <input type="password" placeholder="비밀번호">
+                <form method="POST" action="login.php">
+                    <input type="text" name="id" placeholder="아이디" autocomplete="off">
+                    <input type="password" name="pw" class="reset" placeholder="비밀번호" autocomplete="off">
 
                     <input type="submit" value="로그인" class="login-btn">
                 </form>
@@ -37,7 +40,7 @@
                 <ul>
                     <li><span>아이디 찾기</span></li>
                     <li><span>비밀번호 재설정</span></li>
-                    <li><span>회원가입</span></li>
+                    <li><a href="signUp.html"><span>회원가입</span></a></li>
                 </ul>
             </div>
         </div>
