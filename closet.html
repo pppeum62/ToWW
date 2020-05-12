@@ -3,12 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>ToWW</title>
 
+        <!-- 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
         <link rel="stylesheet" href="./reset.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css"
     </head>
     <style>
+        body { padding-top: 50px; background-color: #eee; }
+
         /* header */ 
         .header { text-align: right; margin: 30px 30px 10px; }
         .header .title { font-weight: bold; }
@@ -16,7 +22,7 @@
         .share { width: 30px; height: 30px; background-color: #ccc; float: right; margin-right: 30px; }
 
         /* profile */
-        .profile-area { width: 100vw; margin-top: 30px; border-bottom: 5px solid #ccc; } 
+        .profile-area { width: 100vw; margin-top: 30px; padding-bottom: 10px; } 
         .profile-area .profile-img { width: 100px; height: 100px; background-color: #ccc; border-radius: 50px; margin: auto; }
         .profile-area .profile-info { text-align: center; }
         .profile-area .profile-info .nickname { margin: 8px 0 3px; display: inline-block; }
@@ -27,14 +33,15 @@
         .profile-area .profile-info .follow { margin-bottom: 10px; }
 
         /* bookmark */
-        .bookmark-area { margin: 20px 10vw 10vw; }
+        .bookmark-area { padding: 20px 10vw 10vw; border-radius: 20px 20px 0 0; background-color: #fff; }
         .bookmark-area .bookmark-header { margin-bottom: 15px; }
         .bookmark-area .bookmark-header .title { margin-bottom: 5px; }
         .bookmark-area .bookmark-header .bookmark-menu ul { display: inline; }
         .bookmark-area .bookmark-header .bookmark-menu li { position: relative; display: inline; }
-        .bookmark-area .bookmark-header .bookmark-menu li span { padding: 8px; }
+        .bookmark-area .bookmark-header .bookmark-menu li span { padding: 8px; cursor: pointer; }
         .bookmark-area .bookmark-header .bookmark-menu li span:first-child { padding-left: 0; }
         .bookmark-area .bookmark-header .bookmark-menu .append-menu { display: inline; border: 1px solid black; padding: 2px 3px; border-radius: 7px; }
+        .bookmark-area .bookmark-header .bookmark-menu .append-menu span { cursor: pointer; }
         .bookmark-area .bookmark { display: flex; flex-direction: row; flex-wrap: wrap; }
         .bookmark-area .bookmark div { width: 40vw; height: 40vw; display: inline-block; }
         .bookmark-1 { background-color: #ddd; }
@@ -43,6 +50,33 @@
         .bookmark-4 { background-color: #aaa; }
     </style>
     <body>
+        <!-- 네비게이션바 -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="weather.html">ToWW</a>
+                </div>
+            
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="divider"></li>
+                        <li><a href="closet.html">MY 스타일 <span class="sr-only">(current)</span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="setting.html">환경설정</a></li>
+                        <li><a href="#">지역설정</a></li>
+                        <li><a href="mailto:blueacryl0220@gmail.com ?subject=[ToWW] Feedback for ToWW&body=피드백 감사합니다! 아래에 문의 내용을 적어주세요.">문의하기</a></li>
+                    </ul>         
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav><!--네비게이션 끝-->
         <div class="header">
             <h1 class="title">내 옷장</h1>
             <span>내 옷장에서 나만의 개성을 펼쳐보세요!</span>
@@ -52,6 +86,7 @@
             <div class="profile-img"></div>
             <div class="profile-info">
                 <span class="nickname">내 닉네임</span>
+                <!---
                 <div class="follow">
                     <ul>
                         <li class="following">
@@ -62,6 +97,7 @@
                         </li>
                     </ul>
                 </div>
+                -->
             </div>
         </div>
         <div class="bookmark-area">
@@ -91,5 +127,8 @@
                 <div class="bookmark-4"></div>
             </div>
         </div>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     </body>
 </html>
