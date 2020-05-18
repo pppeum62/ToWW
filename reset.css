@@ -19,3 +19,6 @@ ul, li, ol, dl, menu{list-style-type: none;}
 
 /* 테두리 초기화 */
 img, fieldset{ border: 0; }
+
+/* ios 대응 */
+input{ appearance: none; -webkit-appearance: none; border-radius: 0; }
