@@ -72,7 +72,7 @@
                     <!-- name-area start -->
                     <div class="name">
                         <span class="title-span">이름</span>
-                        <input type="text" class="content" name="name" placeholder="이름 입력하기" required autocomplete="off">
+                        <input type="text" class="content" id="name" name="name" placeholder="이름 입력하기" required autocomplete="off">
                     </div>
                     <!-- name-area end -->
 
@@ -90,13 +90,32 @@
                     </div>
                     <!-- local-area end -->
 
-                    <input type="submit" class="find-btn" value="다음으로">
+                    <input type="button" class="find-btn" value="다음으로" onclick="check()">
                 </form>
             </div>
         </div>
 
         <!-- 지역 option 동적 추가 및 선택 값 변동 체크 -->
         <script type="text/javascript" src="local.js"></script>
+
+        <!-- 올바른 정보를 입력했는지 체크 -->
+        <script>
+            function check() {
+                var name = document.getElementById("name").value;
+                var depth1 = document.getElementById("s1").value;
+                var depth2 = document.getElementById("s2").value;
+
+                if(depth1 == "시/도") {
+                    alert("지역을 선택해주세요");
+                    return;
+                } else if(depth2 == "시/군/구") {
+                    alert("지역을 선택해주세요");
+                    return;
+                }
+
+                var result = confirm("이름 : " + name + "\n지역 : " + depth1 + " " + depth2 + "\n위 정보가 맞습니까?");
+            }
+        </script>
         
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
