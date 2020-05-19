@@ -32,13 +32,13 @@
 
         /* name */
         .find-id-area .find-id .name { width: 70vw; height: 6vh; display: contents; }
-        .find-id-area .find-id .name .title-span { border-top-left-radius: 20px; }
-        .find-id-area .find-id .name .content { border-top-right-radius: 20px; }
+        .find-id-area .find-id .name .title-span { border-top-left-radius: 20px; border-bottom-left-radius: 20px; }
+        .find-id-area .find-id .name .content { border-top-right-radius: 20px; border-bottom-right-radius: 20px; }
 
         /* local */
         .find-id-area .find-id .local { width: 70vw; height: 12vh; display: contents; }
-        .find-id-area .find-id .local .title-span { height: 12vh; border-bottom-left-radius: 20px; border-top: 1px solid #ccc; }
-        .find-id-area .find-id .local .content { display: flex; align-items: center; height: 12vh; border-bottom-right-radius: 20px; border-top: 1px solid #ccc; }
+        .find-id-area .find-id .local .title-span { height: 12vh; border-top-left-radius: 20px; border-bottom-left-radius: 20px; margin-top: 5px; }
+        .find-id-area .find-id .local .content { display: flex; align-items: center; height: 12vh; border-top-right-radius: 20px; border-bottom-right-radius: 20px; margin-top: 5px; }
     
         /* local search */
         .search { text-align: center; position: absolute; }
@@ -55,6 +55,8 @@
 
         /* find-btn */
         .find-btn { width: 70vw; height: 6vh; border: none; margin: 70px 0 0 0; padding: 0 10px; border-radius: 20px; background-color: #79aff5; color: #fff; }
+    
+        input:focus { outline: none; }
     </style>
     <body>
         <div class="header">
