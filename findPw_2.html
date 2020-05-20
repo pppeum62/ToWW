@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>ToWW</title>
+
+        <!-- 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <!-- stylesheet -->
+        <link rel="stylesheet" href="./reset.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+    </head>
+    <style>
+        body { background-color: #f8f8f8; }
+
+        .header { height: 12vh; display: flex; align-items: center; justify-content: center; }
+        .header .title { font-weight: bold; }
+        .title { text-align: center; }
+
+        .find-pw-area { height: 88vh; background-color: #fff; border-radius: 20px 20px 0 0; box-shadow: 0px -1px 10px #ddd; }
+        .find-pw-area .find-pw { text-align: center; margin: 5vw 10vw; }
+        .find-pw-area .find-pw form { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+        .find-pw-area .find-pw .title-span { display: flex; align-items: center; box-sizing: border-box; padding: 0 0 0 20px; width: 25vw; height: 6vh; background-color: #f8f8f8; font-weight: bold; }
+        .find-pw-area .find-pw .content { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #f8f8f8; padding: 0 10px; }
+
+        /* pw */
+        .find-pw-area .find-pw .pw { width: 70vw; height: 6vh; display: contents; }
+        .find-pw-area .find-pw .pw .title-span { border-top-left-radius: 20px; border-bottom-left-radius: 20px; }
+        .find-pw-area .find-pw .pw .content { border-top-right-radius: 20px; border-bottom-right-radius: 20px; }
+
+        /* pw-ck */
+        .find-pw-area .find-pw .pw-ck { width: 70vw; height: 6vh; display: contents; }
+        .find-pw-area .find-pw .pw-ck .title-span { border-top-left-radius: 20px; border-bottom-left-radius: 20px; margin-top: 5px; }
+        .find-pw-area .find-pw .pw-ck .content { border-top-right-radius: 20px; border-bottom-right-radius: 20px; margin-top: 5px; }
+
+        /* find-id-title */
+        .find-pw-title { text-align: center; padding-top: 5vh; }
+        .find-pw-title .title { margin-bottom: 10px; }
+        .find-pw-title span { font-size: 13px; }
+
+        /* find-btn */
+        .find-btn { width: 70vw; height: 6vh; border: none; margin: 70px 0 0 0; padding: 0 10px; border-radius: 20px; background-color: #79aff5; color: #fff; }
+        
+        /* reset */
+        .reset { font-family: '맑은 고딕'; letter-spacing: -1px; }
+        input:focus { outline: none; }
+    </style>
+    <body>
+        <div class="header">
+            <h2 class="title">비밀번호 찾기</h2>
+        </div>
+        <div class="find-pw-area">
+            <div class="find-pw-title">
+                <h2 class="title">비밀번호 변경</h2>
+                <span>새로 사용할 비밀번호를 입력해주세요.</span>
+            </div>
+            <div class="find-pw">
+                <form method="POST">
+
+                    <!-- password-area start -->
+                    <div class="pw">
+                        <span class="title-span">비밀번호</span>
+                        <input type="password" class="reset content" name="pw" id="pw" placeholder="비밀번호 입력하기" required autocomplete="off">
+                    </div>
+                    <!-- password-area end -->
+
+                    <!-- password-check-area start -->
+                    <div class="pw-ck">
+                        <span class="title-span">비밀번호 확인</span>
+                        <input type="password" class="reset content" name="pw-ck" id="pw_ck" placeholder="비밀번호 재입력하기" required autocomplete="off">
+                    </div>
+                    <!-- password-check-area end -->
+
+                    <input type="submit" class="find-btn" onclick="check_password()"; value="다음으로">
+                </form>
+            </div>
+        </div>
+
+        <!-- 비밀번호 체크 -->
+        <script type="text/javascript" src="check.js"></script>
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
