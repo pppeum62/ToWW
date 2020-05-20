@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>ToWW</title>
+
+        <!-- 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <!-- stylesheet -->
+        <link rel="stylesheet" href="./reset.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+    </head>
+    <style>
+        body { background-color: #f8f8f8; }
+
+        .header { height: 12vh; display: flex; align-items: center; justify-content: center; }
+        .header .title { font-weight: bold; }
+        .title { text-align: center; }
+
+        .find-pw-area { height: 88vh; background-color: #fff; border-radius: 20px 20px 0 0; box-shadow: 0px -1px 10px #ddd; }
+        .find-pw-area .find-pw { text-align: center; margin: 5vw 10vw; }
+        .find-pw-area .find-pw form { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+        .find-pw-area .find-pw .title-span { display: flex; align-items: center; box-sizing: border-box; padding: 0 0 0 20px; width: 25vw; height: 6vh; background-color: #f8f8f8; font-weight: bold; }
+        .find-pw-area .find-pw .content { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #f8f8f8; padding: 0 10px; }
+
+        /* name */
+        .find-pw-area .find-pw .name { width: 70vw; height: 6vh; display: contents; }
+        .find-pw-area .find-pw .name .title-span { border-top-left-radius: 20px; border-bottom-left-radius: 20px; }
+        .find-pw-area .find-pw .name .content { border-top-right-radius: 20px; border-bottom-right-radius: 20px; }
+
+        /* id */
+        .find-pw-area .find-pw .id { width: 7vw; height: 6vh; display: contents; }
+        .find-pw-area .find-pw .id .title-span { border-top-left-radius: 20px; border-bottom-left-radius: 20px; margin-top: 5px; }
+        .find-pw-area .find-pw .id .content { border-top-right-radius: 20px; border-bottom-right-radius: 20px; margin-top: 5px; }
+
+        /* find-id-title */
+        .find-pw-title { text-align: center; padding-top: 5vh; }
+        .find-pw-title .title { margin-bottom: 10px; }
+        .find-pw-title span { font-size: 13px; }
+
+        /* find-btn */
+        .find-btn { width: 70vw; height: 6vh; border: none; margin: 70px 0 0 0; padding: 0 10px; border-radius: 20px; background-color: #79aff5; color: #fff; }
+    
+        input:focus { outline: none; }
+    </style>
+    <body>
+        <div class="header">
+            <h2 class="title">비밀번호 찾기</h2>
+        </div>
+        <div class="find-pw-area">
+            <div class="find-pw-title">
+                <h2 class="title">로그인에 문제가 있으신가요?</h2>
+                <span>회원가입 시 설정했던 이름과 아이디를 입력하시면<br>새로운 비밀번호를 설정할 수 있습니다.</span>
+            </div>
+            <div class="find-pw">
+                <form method="POST">
+                    <!-- name-area start -->
+                    <div class="name">
+                        <span class="title-span">이름</span>
+                        <input type="text" class="content" id="name" name="name" placeholder="이름 입력하기" required autocomplete="off">
+                    </div>
+                    <!-- name-area end -->
+
+                    <!-- id-area start -->
+                    <div class="id">
+                        <span class="title-span">아이디</span>
+                        <input type="text" class="content" id="id" name="id" placeholder="아이디 입력하기" required autocomplete="off">
+                    </div>
+                    <!-- id-area end -->
+
+                    <input type="submit" class="find-btn" value="다음으로">
+                </form>
+            </div>
+        </div>
+
+        <!-- 지역 option 동적 추가 및 선택 값 변동 체크 -->
+        <script type="text/javascript" src="local.js"></script>
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
