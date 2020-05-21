@@ -2,7 +2,7 @@
     $id = $_POST['id'];
     $pw = $_POST['pw'];
 
-    $conn = mysqli_connect('127.0.0.1', 'root', 'mirim2', 'toww');
+    $conn = mysqli_connect('localhost', 'root', 'mirim2', 'toww');
     $sql = 'select * from members where id="' .$id. '"';
 
     $result = mysqli_query($conn, $sql);
