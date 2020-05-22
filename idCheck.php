@@ -1,7 +1,7 @@
 <?php
     $id = $_GET['id'];
 
-    $conn = mysqli_connect('localhost', 'root', 'mirim2', 'toww');
+    $conn = mysqli_connect('localhost', 'toww', 'mirimww1!', 'toww');
 
     /* 아이디 중복 확인 */
     $sql = 'select * from members where id="'.$id.'"';

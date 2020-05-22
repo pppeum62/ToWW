@@ -7,7 +7,7 @@
 
     $encrypted_pw = password_hash($pw, PASSWORD_DEFAULT);
 
-    $conn = mysqli_connect('localhost', 'root', 'mirim2', 'toww');
+    $conn = mysqli_connect('localhost', 'toww', 'mirimww1!', 'toww');
     $sql = 'select * from members where id="'.$id.'"';
     $result = mysqli_query($conn, $sql);
 
