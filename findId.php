@@ -56,7 +56,7 @@
                     $depth1 = $_POST{'depth1'};
                     $depth2 = $_POST{'depth2'};
 
-                    $conn = mysqli_connect('127.0.0.1', 'root', 'mirim2', 'toww');
+                    $conn = mysqli_connect('localhost', 'toww', 'mirimww1!', 'toww');
                     $sql = 'select * from members where name="'.$name.'" and depth1="'.$depth1.'" and depth2="'.$depth2.'";';
                     $result = mysqli_query($conn, $sql);
 
