@@ -78,6 +78,8 @@
                     } else {
                         echo '일치하는 정보가 없습니다. 입력한 정보를 다시 확인해주세요.';
                     }
+
+                    mysqli_close($conn);
                 ?>
 
                 <a href="login.html"><button type="button" class="find-btn">로그인 하기</button></a>
