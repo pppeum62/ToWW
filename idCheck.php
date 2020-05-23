@@ -18,6 +18,8 @@
         } else {
             echo '<script>alert("사용 가능한 아이디입니다!"); window.close();</script>';
         }
+
+        mysqli_close($conn);
     ?>
     </body>
 </html>
