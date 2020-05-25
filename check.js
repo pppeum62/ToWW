@@ -39,6 +39,8 @@ function input_id() {
     userid = userid.replace(/\s/g,'');
 
     id.value = userid;
+
+    checked = false;
 }
 
 /* name 특수문자, 공백 체크 및 제거 */
