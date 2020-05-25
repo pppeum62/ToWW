@@ -29,3 +29,51 @@ function signup() {
         return false;
     }
 }
+
+/* id 공백 제거 */
+function input_id() {
+    var id = document.getElementById('id');
+    var userid = id.value;
+    
+    userid = jQuery.trim(userid);
+    userid = userid.replace(/\s/g,'');
+
+    id.value = userid;
+}
+
+/* name 특수문자, 공백 체크 및 제거 */
+function input_name() {
+    var reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+    var regExp = /\s/g;
+    var name = document.getElementById('name');
+    var username = name.value;
+
+    if(reg.test(username)) {
+        username = username.replace(reg, "");
+
+        alert("이름에는 특수문자가 포함될 수 없습니다!");
+    }
+
+    if(regExp.test(username)) {
+        username = username.replace(regExp, "");
+    }
+
+    name.value = username;
+
+    return;
+}
+
+/* password 공백 제거 */
+function input_pw() {
+    var regExp = /\s/g;
+
+    var pw = document.getElementById('pw');
+    var userpw = pw.value;
+
+    if(regExp.test(userpw)) {
+        userpw = "";
+        alert('비밀번호에 공백은 포함될 수 없습니다! 다시 입력해주세요.');
+    }
+
+    pw.value = userpw;
+}
