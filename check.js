@@ -62,4 +62,18 @@ function input_name() {
 
     return;
 }
+
+/* password 공백 제거 */
+function input_pw() {
+    var regExp = /\s/g;
+
+    var pw = document.getElementById('pw');
+    var userpw = pw.value;
+
+    if(regExp.test(userpw)) {
+        userpw = "";
+        alert('비밀번호에 공백은 포함될 수 없습니다! 다시 입력해주세요.');
+    }
+
+    pw.value = userpw;
 }
