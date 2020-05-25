@@ -12,12 +12,35 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
     <style>
+        body {
+            background-color: #f8f8f8;
+        }
+
         .signup-area { position: absolute; top: 50%; transform: translateY(-50%); }
         .signup-area .signup-header { text-align: center; margin-bottom: 10px; }
         .signup-area .signup { text-align: center; margin: 10vw; }
 
-        .signup-area .signup .title-span { display: flex; align-items: center; box-sizing: border-box; padding: 0 0 0 20px; width: 25vw; height: 6vh; background-color: #eee; font-weight: bold; }
-        .signup-area .signup .content { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; }
+        .signup-area .signup .title-span { 
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 0 0 20px;
+            width: 25vw;
+            height: 6vh; 
+            background-color: #fff;
+            font-weight: bold;
+        }
+
+        .signup-area .signup .content { 
+            box-sizing: border-box;
+            width: 45vw;
+            height: 6vh;
+            border: none;
+            background-color: #fff;
+            padding: 0 10px;
+        }
+
+
 
         /* name */
         .signup-area .signup .name { width: 70vw; height: 6vh; display: contents; }
@@ -26,25 +49,54 @@
 
         /* local */
         .signup-area .signup .local { width: 70vw; height: 12vh; display: contents; }
-        .signup-area .signup .local .title-span { height: 12vh; border-bottom-left-radius: 20px; border-top: 1px solid #ccc; }
-        .signup-area .signup .local .content { display: flex; align-items: center; height: 12vh; border-bottom-right-radius: 20px; border-top: 1px solid #ccc; }
+        .signup-area .signup .local .title-span {
+            height: 12vh;
+            border-bottom-left-radius: 20px;
+            border-top: 1px solid #f8f8f8;
+        }
+
+        .signup-area .signup .local .content {
+            display: flex;
+            align-items: center;
+            height: 12vh;
+            border-bottom-right-radius: 20px;
+            border-top: 1px solid #f8f8f8;
+        }
+
+
 
         /* id */
         .signup-area .signup .id { width: 70vw; height: 6vh; display: contents; }
         .signup-area .signup .id .title-span { margin-top: 6px; border-top-left-radius: 20px; }
         .signup-area .signup .id .content { margin-top: 6px; border-top-right-radius: 20px; display: flex; align-items: center; }
         .signup-area .signup .id .content .input-id { border: none; width: 30vw; background: none; }
-        .signup-area .signup .id .content .id-btn { border: none; background-color: #ccc; padding: 1px 6px; border-radius: 20px; }
+        .signup-area .signup .id .content .id-btn {
+            border: none;
+            background-color: #f8f8f8;
+            padding: 1px 6px;
+            border-radius: 20px;
+        }
+
+
 
         /* pw */
         .signup-area .signup .pw { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .pw .title-span { border-top: 1px solid #ccc; }
-        .signup-area .signup .pw .content { border-top: 1px solid #ccc; }
+        .signup-area .signup .pw .title-span { border-top: 1px solid #f8f8f8; }
+        .signup-area .signup .pw .content { border-top: 1px solid #f8f8f8; }
 
         /* pw-ck */
         .signup-area .signup .pw-ck { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .pw-ck .title-span { border-bottom-left-radius: 20px; border-top: 1px solid #ccc; }
-        .signup-area .signup .pw-ck .content { border-bottom-right-radius: 20px; border-top: 1px solid #ccc; }
+        .signup-area .signup .pw-ck .title-span {
+            border-bottom-left-radius: 20px;
+            border-top: 1px solid #f8f8f8;
+        }
+
+        .signup-area .signup .pw-ck .content {
+            border-bottom-right-radius: 20px;
+            border-top: 1px solid #f8f8f8;
+        }
+
+
 
         .signup-area .signup form { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
         .signup-area .signup input:focus { outline: none; }
