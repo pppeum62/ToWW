@@ -29,3 +29,14 @@ function signup() {
         return false;
     }
 }
+
+/* id 공백 제거 */
+function input_id() {
+    var id = document.getElementById('id');
+    var userid = id.value;
+    
+    userid = jQuery.trim(userid);
+    userid = userid.replace(/\s/g,'');
+
+    id.value = userid;
+}
