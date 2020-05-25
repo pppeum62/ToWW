@@ -40,3 +40,20 @@ function input_id() {
 
     id.value = userid;
 }
+
+/* name 특수문자 체크 및 제거 */
+function input_name() {
+    var reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+    var name = document.getElementById('name');
+    var username = name.value;
+
+    if(reg.test(username)) {
+        username = username.replace(reg, "");
+
+        alert("이름에는 특수문자가 포함될 수 없습니다!");
+    }
+
+    name.value = username;
+
+    return;
+}
