@@ -12,6 +12,7 @@ function check_ID() {
     checked = true;
 }
 
+/* 비밀번호 일치 여부 체크 */
 function check_password() {
     var pw = document.getElementById('pw');
     var pwck = document.getElementById('pw_ck');
@@ -22,6 +23,33 @@ function check_password() {
     }
 }
 
+/* 지역 설정 체크 */
+function check_local() {
+    var name = document.getElementById('name').value;
+    var id = document.getElementById('id').value;
+    var pw = document.getElementById('pw').value;
+    var pwck = document.getElementById('pw_ck').value;
+
+    if(name == '' || id == '' || pw == '' || pwck == '' || checked == false) {
+        return;
+    }
+
+    var depth1 = document.getElementById('s1');
+    var depth2 = document.getElementById('s2');
+    var answer;
+
+    if(depth1.value == '시/도') {
+        answer = confirm("지역이 선택 되지 않았습니다.\n회원가입 후 지역을 재설정 할 수 있지만\n지역을 선택하지 않으면 계정 찾기가 불가능합니다.");
+    } else {
+        var userlocal = depth1.value + ' ' + depth2.value;
+        answer = confirm("선택하신 지역은 " + userlocal + "입니다.\n맞습니까?");
+
+        console.log(answer);
+    }
+
+}
+
+/* 아이디 중복 확인 체크 */
 function signup() {
     if(!checked) {
         alert("아이디 중복 확인을 해주세요");
