@@ -1,17 +1,5 @@
 var checked = false;
 
-function check_ID() {
-    var id = document.getElementById('id').value;
-    if(id == '') {
-        alert('아이디를 입력해주세요');
-
-        return;
-    }
-    window.open('idCheck.php?id='+id, 'CheckWindow', 'width=500, height=120, top=150, left=100');
-
-    checked = true;
-}
-
 /* 비밀번호 일치 여부 체크 */
 function check_password() {
     var pw = document.getElementById('pw');

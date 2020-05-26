@@ -174,7 +174,7 @@
                         <span class="title-span">아이디</span>
                         <div class="content">
                             <input type="text" class="input-id" id="id" name="id" placeholder="아이디 입력하기" required autocomplete="off" onchange="input_id()">
-                            <a href="javascript:check_ID()" class="id-btn">확인</a>
+                            <span href="" class="id-btn" onclick="id_check();">확인</span>
                             <!--<input type="button" class="id-btn" value="확인">-->
                         </div>
                     </div>
@@ -229,6 +229,46 @@
 
                 $("#layer").fadeOut("slow");
             })
+        </script>
+
+        <!-- 아이디 중복 확인 -->
+        <script>
+            function id_check() {
+                var userid = $("#id").val();
+
+                if(userid == '') {
+                    alert('아이디를 입력해주세요!');
+
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "./idCheck.php?userdata="+userid,
+                    data: { "id": userid },
+                    datatype: "json",
+                    success: function (data) {
+                        if(data == "1") {
+                            alert("사용할 수 있는 아이디입니다!");
+                            ID_OK();
+                        } else {
+                            alert("사용할 수 없는 아이디입니다! 다른 아이디를 입력해주세요");
+                            ID_NO();
+                        }
+                        // alert(data);
+                    }, error:function() {
+                        alert("Error!");
+                    }
+                });
+            }
+
+            function ID_OK() {
+                checked = true;
+            }
+
+            function ID_NO() {
+                checked = false;
+            }
         </script>
 
         <!-- 아이디 및 비밀번호 체크 -->
