@@ -44,6 +44,7 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="apiTest2.js"></script>
+    <script src="daily.js"></script>
 </head>
 <body>
     <!-- 네비게이션바 -->
@@ -78,57 +79,59 @@
         <div class="col-sm-12 text-right">
             <h2>오늘의 날씨</h2>
             <p class="gray">
-                업데이트 몇일 몇날
+                업데이트 <span id="month"></span>월 <span id="date"></span>일
             </p>
         </div>
     </div> <!--#weather1-->
-
+    
     <div class="container" id="weather2">
         <div class="col-sm-12 text-center">
             <h3>
-                <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> &nbsp; 
-                <span id="temp"></span> 도 / <span id="clouds"></span>
+                <img src="" alt="날씨아이콘" width="8%" id="icon">
+                <span id="temp"></span>°C / <span id="clouds"></span>
+            
             </h3>
             <p class="gray">
-                최고온도 / 최저온도 <br>
-                미세먼지 () / 초미세먼지 ()
+                최고온도 <span id="temp_max"></span>°C / 최저온도 <span id="temp_min"></span>°C <br> &nbsp;
+                <!-- 미세먼지 () / 초미세먼지 () -->
             </p>
         </div><!--날씨표시-->
         <div class="col-sm-12">
             <div class="row">
-                <div class="col-xs-2">
-                    <img src="https://postfiles.pstatic.net/MjAxOTAxMjNfMjUz/MDAxNTQ4MjE1MTYxNTU3.ApPxRpD3VI2q9Vymzphqwc5kBwcXSwZ4rOtkxU7KB8Qg.pIG9TiUqlYy1As6AOKpKr2m621qFOSpnDwZfZFugvj0g.JPEG.ksh20713/SE-dfef9ec0-4d71-4dbe-8827-878f8aa79d8e.jpg?type=w773"
-                    alt="캐릭터" width="100%" class="img-circle">
+                <div class="col-xs-3">
+                    <img src="./img/profile.png" width="100%">
                 </div>
-                <div id="carousel-example-generic" class="carousel slide col-xs-10" data-ride="carousel">
+                <div id="carousel-example-generic" class="carousel slide col-xs-9" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
+                        <!-- 
                         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li> 
+                        -->
                     </ol>
-                <!--사진은 김수현이 1학년 사진수업때 찍은 사진이고 크기가 안맞아서 중앙으로 안간다-->
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner img-rounded" role="listbox">
                         <div class="item active">
-                            <img src="https://postfiles.pstatic.net/MjAxOTAxMDFfMjI0/MDAxNTQ2MzI2NzAxMjU5.M1QX8rBPMx7_x09s7Wo8vVmqGbQzLAk12uG5bNjIn5Mg.wVdt8QzZW9eqmK4r6yqsvj1eGN1TPotAdQ244hUur0Qg.JPEG.ksh20713/DSC_0079.JPG?type=w773" 
-                            alt="옷추천1">
+                            <img src="./img/말풍선.png" alt="옷추천2">
                             <div class="carousel-caption">
-                            요건 어때?
+                                <h4 text-align="center">
+                                    <span id="top"></span> 입는게 좋을 듯~!
+                                </h4>
                             </div>
                         </div>
                         <div class="item">
-                            <img src="https://postfiles.pstatic.net/MjAxOTAxMDFfMTMy/MDAxNTQ2MzI2NzAxNjU5.R82NZU4H8VTthQHMpF4xc4mOwS15KTZ-rvIEzcL7NM8g.7Ts38w4KSgHoouSTvQcYWs-Q2sTb9mXzL5Ze7pADoCgg.JPEG.ksh20713/DSC_0114.JPG?type=w773" 
-                            alt="옷추천2">
+                            <img src="./img/말풍선.png" alt="옷추천2">
                             <div class="carousel-caption">
-                            이건
+                                <h4 text-align="center">
+                                    <span id="bottom"></span>추천드림.
+                                </h4>
                             </div>
                         </div>
                         <div class="item">
-                            <img src="https://postfiles.pstatic.net/MjAxOTAxMDFfMTUg/MDAxNTQ2MzI2Njk4Mzg4.YhCwzcAFRHOQKZBuFLLhgxv8EyN4Fmta_Edb6ETHkhwg.fnsBE7Jk07hYkMmiQ_0brWp9HMwajKs4GAdXdNLftVkg.JPEG.ksh20713/DSC_0148.JPG?type=w773" 
-                            alt="옷추천3">
+                            <img src="./img/말풍선.png" alt="옷추천3">
                             <div class="carousel-caption">
-                            니 입고 싶은거 입어라.
+                                <h3>니 입고 싶은거 입어라악!.</h3>
                             </div>
                         </div>
                     </div>  
@@ -139,23 +142,34 @@
             <h2>시간별</h2>
             <div class="row img-rounded" id="hourly">
                 <div class="col-xs-3 text-center">
-                    15시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextTime01"></span>
+                    <p><span class="glyphicon glyphicon-certificate">
+                            <span id="nextDesc01"></span>
+                        </span>&nbsp;<span id="nextTemp01"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    16시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextTime02"></span>
+                    <p><span class="glyphicon glyphicon-certificate">
+                            <span id="nextDesc02"></span>
+                        </span>&nbsp;
+                        <span id="nextTemp02"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    17시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextTime03"></span>
+                    <p><span class="glyphicon glyphicon-certificate">
+                            <span id="nextDesc03"></span>
+                        </span>&nbsp;
+                        <span id="nextTemp03"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    18시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextTime04"></span>
+                    <p><span class="glyphicon glyphicon-certificate">
+                            <span id="nextDesc04"></span>
+                        </span>&nbsp;
+                        <span id="nextTemp04"></span>°C</p>
                     가디건
                 </div>
             </div>
@@ -164,23 +178,34 @@
             <h2>요일별</h2>
             <div class="row img-rounded" id="weekly">
                 <div class="col-xs-3 text-center">
-                    15시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextDay01"></span>
+                    <p><span class="glyphicon glyphicon-certificate">
+                            <span id="dayDesc01"></span>
+                        </span>&nbsp;<span id="dayTemp01"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    16시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextDay02"></span>
+                    <p><span class="glyphicon glyphicon-certificate">
+                            <span id="dayDesc02"></span>
+                        </span>&nbsp;
+                        <span id="dayTemp02"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    17시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextDay03"></span>
+                    <p><span class="glyphicon glyphicon-certificate">
+                            <span id="dayDesc03"></span>
+                        </span>&nbsp;
+                        <span id="dayTemp03"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    18시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextDay04"></span>
+                    <p><span class="glyphicon glyphicon-certificate">
+                            <span id="dayDesc04"></span>
+                        </span>&nbsp;
+                        <span id="dayTemp04"></span>°C</p>
                     가디건
                 </div>
             </div>
