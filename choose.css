@@ -1,46 +1,112 @@
 body {
     margin: 0;
-    padding: 0;
+    padding-top: 50px;
     background: #f8f8f8;
+    /*
     display: flex;
     justify-content: center;
     align-items: center;
+    */
     min-height: 100vh;
 }
 
-.container {
+.choose {
+    width: 90vw;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
-.container div {
-    margin: 3px;
+.choose div {
+    margin: 0 3px;
 }
 
-.container div label {
+.choose div label {
     cursor: pointer;
 }
 
-.container div label input[type="checkbox"] {
+.choose div label input[type="checkbox"] {
     display: none;
 }
 
-.container div label span {
+.choose div label span {
     position: relative;
     display: inline-block;
     background: #ecf3fd;
-    padding: 15px 30px;
+    padding: 5px 10px;
     border-radius: 30px;
     transition: 0.5s;
     user-select: none;
     overflow: hidden;
 }
 
-.container div label input[type="checkbox"]:checked ~ span {
+.choose div label input[type="checkbox"]:checked ~ span {
     background: #79aff5;
     color: #fff;
+}
+
+
+/* header */ 
+.header { 
+    text-align: right;
+    margin: 30px;
+}
+
+.header .title {
+    font-weight: bold;
+}
+
+/* style */
+.style {
+    background-color: #fff;
+    border-radius: 20px 20px 0 0;
+    padding-top: 20px;
+    box-shadow: 0px -1px 10px #ddd;
+}
+
+.frame {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.item-name {
+    margin: 5px 8px;
+    font-size: 18px;
+}
+
+.top, .training, .skirt, .pants {
+    margin-top: 15px;
+}
+
+.style .btn-area {
+    text-align: center;
+    padding: 25px 0;
+}
+
+.style .btn-area .choose-btn {
+    margin-top: 20px;
+    padding: unset;
+    background-color: #79aff5;
+    color: #fff;
+}
+
+.style .btn-area input {
+    box-sizing: border-box;
+    width: 65vw;
+    height: 6vh;
+    border: none;
+    background-color: #eee;
+    margin: 3px 0;
+    padding: 0 0 0 20px;
+    border-radius: 20px;
+}
+
+.style .btn-area input:focus {
+    outline: none;
 }
