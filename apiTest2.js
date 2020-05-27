@@ -32,7 +32,7 @@ $.ajax({
         console.log("현재습도 : "+ resp.main.humidity);
         console.log("날씨 : "+ resp.weather[0].main );
         console.log("상세날씨설명 : "+ resp.weather[0].description );
-        console.log("날씨 이미지 : "+ resp.weather[0].icon );
+        console.log("날씨 이미지 : "+ resp.weather[0].icon);
         //alert(resp.dt + 9); unix utc 계산 우째함 하 못알아먹겠음~~.
         console.log("바람   : "+ resp.wind.speed );
         console.log("나라   : "+ resp.sys.country );
