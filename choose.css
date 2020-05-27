@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container div {
+    margin: 3px;
+}
+
+.container div label {
+    cursor: pointer;
+}
+
+.container div label input[type="checkbox"] {
+    display: none;
+}
+
+.container div label span {
+    position: relative;
+    display: inline-block;
+    background: #ecf3fd;
+    padding: 15px 30px;
+    border-radius: 30px;
+    transition: 0.5s;
+    user-select: none;
+    overflow: hidden;
+}
+
+.container div label input[type="checkbox"]:checked ~ span {
+    background: #79aff5;
+    color: #fff;
+}
