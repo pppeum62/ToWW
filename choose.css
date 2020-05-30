@@ -80,7 +80,7 @@ body {
     font-size: 18px;
 }
 
-.top, .training, .skirt, .pants {
+.top, .training, .bottoms, .etc {
     margin-top: 15px;
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 .style .btn-area .choose-btn {
-    margin-top: 20px;
+    /* margin-top: 20px; */
     padding: unset;
     background-color: #79aff5;
     color: #fff;
