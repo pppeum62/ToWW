@@ -15,13 +15,6 @@ stringCut02 = function(a){
     return a.substring(5,10);
 }
 
-
-var imgLoad;
-imgLoad = function(a){
-    return ("http://openweathermap.org/img/w/" + resp.list[a].weather[0].icon+ ".png");
-    //$("#icon").attr("src", imgURL);
-}
-
 $.ajax({
     url: dailyURL,
     dataType: "json",
@@ -64,17 +57,12 @@ $.ajax({
         $("#dayIcon03").attr("src","http://openweathermap.org/img/w/" + resp.list[26].weather[0].icon+ ".png");
         $("#dayIcon04").attr("src","http://openweathermap.org/img/w/" + resp.list[34].weather[0].icon+ ".png");
 
-        //$("#dayIcon01").attr("src", imgLoad(10));
-        // $('#dayIcon01').html(resp.list[0].weather[0].icon);
-        // $('#dayIcon02').html(resp.list[0].weather[0].icon);
-        // $('#dayIcon03').html(resp.list[0].weather[0].icon);
-        // $('#dayIcon04').html(resp.list[0].weather[0].icon);
-
         $('#dayDesc01').html(resp.list[10].weather[0].description);
         $('#dayDesc02').html(resp.list[18].weather[0].description);
         $('#dayDesc03').html(resp.list[26].weather[0].description);
         $('#dayDesc04').html(resp.list[34].weather[0].description);
 
+        //여원쓰한테 말하기
         $('#dayTemp01').html(Math.round(resp.list[10].main.temp));
         $('#dayTemp02').html(Math.round(resp.list[18].main.temp));
         $('#dayTemp03').html(Math.round(resp.list[26].main.temp));
