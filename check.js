@@ -1,4 +1,5 @@
 var checked = false;
+var localck = false;
 
 /* 비밀번호 일치 여부 체크 */
 function check_password() {
@@ -28,9 +29,21 @@ function check_local() {
 
     if(depth1.value == '시/도') {
         answer = confirm("지역이 선택 되지 않았습니다.\n회원가입 후 지역을 재설정 할 수 있지만\n지역을 선택하지 않으면 계정 찾기가 불가능합니다.");
+        localck = false;
+
+        return;
     } else {
         var userlocal = depth1.value + ' ' + depth2.value;
         answer = confirm("선택하신 지역은 " + userlocal + "입니다.\n맞습니까?");
+
+        if(answer) {
+            localck = true;
+        } else {
+            alert("지역을 다시 선택해주세요!");
+            localck = false;
+
+            return;
+        }
 
         console.log(answer);
     }
@@ -44,6 +57,10 @@ function signup() {
 
         return false;
     }
+
+    var re = check();
+
+    return re;
 }
 
 /* id 공백 제거 */
@@ -94,4 +111,16 @@ function input_pw() {
     }
 
     pw.value = userpw;
+}
+
+function check() {
+
+    check_password();
+    check_local();
+
+    if(checked && localck) {
+        document.signupfm.submit();
+    }
+
+    return false;
 }

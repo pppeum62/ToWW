@@ -146,7 +146,7 @@
                 <h1 class="title">회원가입</h1>
             </div>
             <div class="signup">
-                <form method="POST" action="signUp.php" onsubmit="return signup()">
+                <form method="POST" action="signUp.php" onsubmit="return signup()" id="signupfm" name="signupfm">
 
                     <!-- name-area start -->
                     <div class="name">
@@ -196,7 +196,7 @@
                     </div>
                     <!-- password-check-area end -->
                     
-                    <input type="submit" class="signup-btn" onclick="check_password(); check_local();"; value="시작하기">
+                    <input type="submit" class="signup-btn" /*onclick="check();";*/ value="시작하기">
                 </form>
             </div>
         </div>
@@ -234,9 +234,9 @@
         <!-- 아이디 중복 확인 -->
         <script>
             function id_check() {
-                var userid = $("#id").val();
+                var userid = $("#id");
 
-                if(userid == '') {
+                if(userid.val() == '') {
                     alert('아이디를 입력해주세요!');
 
                     return;
@@ -244,8 +244,8 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "./idCheck.php?userdata="+userid,
-                    data: { "id": userid },
+                    url: "./idCheck.php?userdata="+userid.val(),
+                    data: { "id": userid.val() },
                     datatype: "json",
                     success: function (data) {
                         if(data == "1") {
@@ -253,6 +253,7 @@
                             ID_OK();
                         } else {
                             alert("사용할 수 없는 아이디입니다! 다른 아이디를 입력해주세요");
+                            focus.userid;
                             ID_NO();
                         }
                         // alert(data);
