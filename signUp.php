@@ -29,8 +29,6 @@
         $sql = "insert into members (name, id, password, depth1, depth2) values(".$data_stream.");";
 
         if (mysqli_query($conn, $sql)) {
-            echo "<script>alert(1 : ".$depth1.");</script>";
-            echo "<script>alert(2 : ".$depth2.");</script>";
             echo "<script>alert('회원가입이 되었습니다!'); location.replace('login.html');</script>";
         } else {
             echo "실패 : " . mysqli_error($conn);
