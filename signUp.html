@@ -10,6 +10,9 @@
 
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <!-- kakao-map API -->
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f74e86af168e6d300282d69164941496&libraries=services,clusterer,drawing"></script>
     </head>
     <style>
         body {
@@ -146,7 +149,9 @@
                 <h1 class="title">회원가입</h1>
             </div>
             <div class="signup">
-                <form method="POST" action="signUp.php" onsubmit="return signup()" id="signupfm" name="signupfm">
+                <form method="POST" action="signUp.php" onsubmit="return signup();" id="signupfm" name="signupfm">
+                    <input type="hidden" name="lat" id="lat" value="">
+                    <input type="hidden" name="lng" id="lng" value="">
 
                     <!-- name-area start -->
                     <div class="name">
@@ -196,7 +201,7 @@
                     </div>
                     <!-- password-check-area end -->
                     
-                    <input type="submit" class="signup-btn" /*onclick="check();";*/ value="시작하기">
+                    <input type="submit" class="signup-btn" /*onclick="check();"*/ value="시작하기">
                 </form>
             </div>
         </div>
@@ -271,6 +276,9 @@
                 checked = false;
             }
         </script>
+
+        <!-- map.js -->
+        <script type="text/javascript" src="map.js"></script>
 
         <!-- 아이디 및 비밀번호 체크 -->
         <script type="text/javascript" src="check.js"></script>

@@ -10,6 +10,8 @@
         $depth1 = $_POST{'depth1'};
         $depth2 = $_POST{'depth2'};
         $pw = $_POST{'pw'};
+        $lat = $_POST{'lat'};
+        $lng = $_POST{'lng'};
 
         $encrypted_pw = password_hash($pw, PASSWORD_DEFAULT);
 
@@ -25,8 +27,8 @@
             $depth2 = null;
         }
 
-        $data_stream = " '$name', '$id', '$encrypted_pw', '$depth1', '$depth2' ";
-        $sql = "insert into members (name, id, password, depth1, depth2) values(".$data_stream.");";
+        $data_stream = " '$name', '$id', '$encrypted_pw', '$depth1', '$depth2', '$lat', '$lng' ";
+        $sql = "insert into members (name, id, password, depth1, depth2, latitude, longitude) values(".$data_stream.");";
 
         if (mysqli_query($conn, $sql)) {
             echo "<script>alert('회원가입이 되었습니다!'); location.replace('login.html');</script>";
