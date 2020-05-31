@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ToWW</title>
 
+        <link rel="stylesheet" href="./signUp.css">
         <link rel="stylesheet" href="./reset.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
 
@@ -14,135 +15,7 @@
         <!-- kakao-map API -->
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f74e86af168e6d300282d69164941496&libraries=services,clusterer,drawing"></script>
     </head>
-    <style>
-        body {
-            background-color: #f8f8f8;
-        }
-
-        .signup-area { position: absolute; top: 50%; transform: translateY(-50%); }
-        .signup-area .signup-header { text-align: center; margin-bottom: 10px; }
-        .signup-area .signup { text-align: center; margin: 10vw; }
-
-        .signup-area .signup .title-span { 
-            display: flex;
-            align-items: center;
-            box-sizing: border-box;
-            padding: 0 0 0 20px;
-            width: 25vw;
-            height: 6vh; 
-            background-color: #fff;
-            font-weight: bold;
-        }
-
-        .signup-area .signup .content { 
-            box-sizing: border-box;
-            width: 45vw;
-            height: 6vh;
-            border: none;
-            background-color: #fff;
-            padding: 0 10px;
-        }
-
-
-
-        /* name */
-        .signup-area .signup .name { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .name .title-span { border-top-left-radius: 20px; }
-        .signup-area .signup .name .content { border-top-right-radius: 20px; }
-
-        /* local */
-        .signup-area .signup .local { width: 70vw; height: 12vh; display: contents; }
-        .signup-area .signup .local .title-span {
-            height: 12vh;
-            border-bottom-left-radius: 20px;
-            border-top: 1px solid #f8f8f8;
-        }
-
-        .signup-area .signup .local .content {
-            display: flex;
-            align-items: center;
-            height: 12vh;
-            border-bottom-right-radius: 20px;
-            border-top: 1px solid #f8f8f8;
-        }
-
-
-
-        /* id */
-        .signup-area .signup .id { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .id .title-span { margin-top: 6px; border-top-left-radius: 20px; }
-        .signup-area .signup .id .content { margin-top: 6px; border-top-right-radius: 20px; display: flex; align-items: center; }
-        .signup-area .signup .id .content .input-id { border: none; width: 30vw; background: none; }
-        .signup-area .signup .id .content .id-btn {
-            border: none;
-            background-color: #f8f8f8;
-            padding: 1px 6px;
-            border-radius: 20px;
-        }
-
-
-
-        /* pw */
-        .signup-area .signup .pw { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .pw .title-span { border-top: 1px solid #f8f8f8; }
-        .signup-area .signup .pw .content { border-top: 1px solid #f8f8f8; }
-
-        /* pw-ck */
-        .signup-area .signup .pw-ck { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .pw-ck .title-span {
-            border-bottom-left-radius: 20px;
-            border-top: 1px solid #f8f8f8;
-        }
-
-        .signup-area .signup .pw-ck .content {
-            border-bottom-right-radius: 20px;
-            border-top: 1px solid #f8f8f8;
-        }
-
-
-
-        .signup-area .signup form { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
-        .signup-area .signup input:focus { outline: none; }
-        
-        /* signup-btn */
-        .signup-area .signup .signup-btn { width: 70vw; height: 6vh; border: none; margin: 70px 0 0 0; padding: 0 10px; border-radius: 20px; background-color: #79aff5; color: #fff; }
-
-        /* local search */
-        .search { text-align: center; position: absolute; }
-        .search .select1 { margin-bottom: 3px; }
-        .search .select2 { margin-top: 3px; }
-
-        select {
-            font-size: 12px;
-            color: #606060;
-            width: 140px;
-            height: 28px;
-            border-radius: 20px;
-            padding: 5px;
-            border: none;
-            background-color: #f8f8f8;
-        }
-
-        select:focus { outline: none; }
-
-
-
-        /* layer */
-        .signup-area .signup .layer { color: gray; font-weight: normal; box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; margin-top: 6px; }
-
-        /* layer popup */
-        #layer { display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 30vh; width: 60vw; background-color: #fff; border: 3px solid #bbb; }
-        #layer .close{ position: absolute; right: 15px; top: 15px; background: #bbb; padding: 1px 6px; color: #fff; z-index: 3; }
-        #layer .close:hover{ text-decoration: underline; }
-        #layer .input-area { left: 50%; top: 50%; transform: translate(-50%, -50%); position: absolute; text-align: center; }
-        #layer .input-box { width: 50vw; height: 5vh; border: 1px solid #ddd; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-top: 40px; }
-        #layer .id-check { width: 35vw; height: 4vh; border: none; box-sizing: border-box; }
-        #layer .id-check:focus { outline: none; }
-        #layer .check { background-color: #ddd; border: none; border-radius: 20px; padding: 1px 6px; cursor: pointer; }
-        #layer .check-btn { border: none; background-color: #ddd; width: 30vw; height: 5vh; border-radius: 20px; margin-top: 40px; }
-
-        .reset { font-family: '맑은 고딕'; letter-spacing: -1px; }
-    </style>
+    
     <body>
         <div class="signup-area">
             <div class="signup-header">
