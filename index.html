@@ -35,6 +35,18 @@
             background-color: rgb(87, 86, 86); 
             color: white;
         }
+        #bubble{
+            margin-top: 2em;
+            /* height: 12em; */
+            background-color: #79aff5;
+            border-radius: 0px 20px 20px 20px;
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+        .clothesIcon{
+            width: 100%;
+            padding-top: 2em;
+        }
         .divider{
             border: rgb(221, 221, 221) 0.5px solid;
         }
@@ -86,13 +98,13 @@
     
     <div class="container" id="weather2">
         <div class="col-sm-12 text-center">
-            <h3>
-                <img src="" alt="날씨아이콘" width="10%" id="icon">
-                <span id="temp"></span>°C / <span id="clouds"></span>
-            </h3>
+            <div style = "font-size:4em;">
+                <img src="" alt="날씨아이콘" width="25%" id="icon">
+                <span id="temp"></span>°C
+            </div>
             <p class="gray">
                 최고온도 <span id="temp_max"></span>°C / 최저온도 <span id="temp_min"></span>°C <br> &nbsp;
-                <!-- 미세먼지 () / 초미세먼지 () -->
+                체감온도 <span id="feels_like"></span> °C 
             </p>
         </div><!--날씨표시-->
         <div class="col-sm-12">
@@ -100,41 +112,27 @@
                 <div class="col-xs-3">
                     <img src="./img/profile.png" width="100%">
                 </div>
-                <div id="carousel-example-generic" class="carousel slide col-xs-9" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <!-- 
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li> 
-                        -->
-                    </ol>
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner img-rounded" role="listbox">
-                        <div class="item active">
-                            <img src="./img/말풍선.png" alt="옷추천2">
-                            <div class="carousel-caption">
-                                <h4 text-align="center">
-                                    <span id="top"></span> 입는게 좋을 듯~!
-                                </h4>
+                <div class="col-xs-9" id="bubble">
+                    <center class="col-xs-12">
+                        <span id="dayNight"></span> 엔 다소 <span></span> 것 같아요.<br>
+                        <span></span>와(과) <span></span>을 추천드려요.<br>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/니트.png" class="clothesIcon" id="recommendTop">
+                                <br><span id="recommendTopText"></span>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/홈웨어.png" class="clothesIcon" id="recommendBottom">
+                                <br><span id="recommendBottomText"></span>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/후드.png" class="clothesIcon">
+                                <br>니트
                             </div>
                         </div>
-                        <div class="item">
-                            <img src="./img/말풍선.png" alt="옷추천2">
-                            <div class="carousel-caption">
-                                <h4 text-align="center">
-                                    <span id="bottom"></span>추천드림.
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="./img/말풍선.png" alt="옷추천3">
-                            <div class="carousel-caption">
-                                <h3>니 입고 싶은거 입어라악!.</h3>
-                            </div>
-                        </div>
-                    </div>  
-                </div><!--캐러멜-->
+                    </center>
+                    <!-- <img src="./img/말풍선.png" alt="옷추천2" width="100%"> -->
+                </div>
             </div> <!--row-->
         </div>
         <div class="col-sm-12 gray">
@@ -187,8 +185,8 @@
                         <span>
                             <img src="" alt="날씨아이콘" id="dayIcon01">                            <span id="dayDesc01"></span>
                             </span>&nbsp;
-                        <span id="dayTemp01"></span>°C
-                    </p>
+                            <span id="dayTemp01"></span>°C
+                        </p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
