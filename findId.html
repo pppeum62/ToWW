@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>ToWW</title>
+
+        <!-- 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <!-- stylesheet -->
+        <link rel="stylesheet" href="./reset.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+    </head>
+    <style>
+        body { background-color: #f8f8f8; }
+
+        .header { height: 12vh; display: flex; align-items: center; justify-content: center; }
+        .header .title { font-weight: bold; }
+        .title { text-align: center; }
+
+        .find-id-area { height: 88vh; background-color: #fff; border-radius: 20px 20px 0 0; box-shadow: 0px -1px 10px #ddd; }
+        .find-id-area .find-id { text-align: center; margin: 5vw 10vw; }
+        .find-id-area .find-id form { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
+        .find-id-area .find-id .title-span { display: flex; align-items: center; box-sizing: border-box; padding: 0 0 0 20px; width: 25vw; height: 6vh; background-color: #f8f8f8; font-weight: bold; }
+        .find-id-area .find-id .content { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #f8f8f8; padding: 0 10px; }
+
+        /* name */
+        .find-id-area .find-id .name { width: 70vw; height: 6vh; display: contents; }
+        .find-id-area .find-id .name .title-span { border-top-left-radius: 20px; border-bottom-left-radius: 20px; }
+        .find-id-area .find-id .name .content { border-top-right-radius: 20px; border-bottom-right-radius: 20px; }
+
+        /* local */
+        .find-id-area .find-id .local { width: 70vw; height: 12vh; display: contents; }
+        .find-id-area .find-id .local .title-span { height: 12vh; border-top-left-radius: 20px; border-bottom-left-radius: 20px; margin-top: 5px; }
+        .find-id-area .find-id .local .content { display: flex; align-items: center; height: 12vh; border-top-right-radius: 20px; border-bottom-right-radius: 20px; margin-top: 5px; }
+    
+        /* local search */
+        .search { text-align: center; position: absolute; }
+        .search .select1 { margin-bottom: 3px; }
+        .search .select2 { margin-top: 3px; }
+
+        select { font-size: 12px; color: #606060; width: 140px; height: 28px; border-radius: 20px; padding: 5px; border: none; }
+        select:focus { outline: none; }
+
+        /* find-id-title */
+        .find-id-title { text-align: center; padding-top: 5vh; }
+        .find-id-title .title { margin-bottom: 10px; }
+        .find-id-title span { font-size: 13px; }
+
+        /* find-btn */
+        .find-btn { width: 70vw; height: 6vh; border: none; margin: 70px 0 0 0; padding: 0 10px; border-radius: 20px; background-color: #79aff5; color: #fff; }
+    
+        input:focus { outline: none; }
+    </style>
+    <body>
+        <div class="header">
+            <h2 class="title">아이디 찾기</h2>
+        </div>
+        <div class="find-id-area">
+            <div class="find-id-title">
+                <h2 class="title">로그인에 문제가 있으신가요?</h2>
+                <span>회원가입 시 설정했던 이름과 지역을 입력하시면<br>계정으로 등록된 아이디를 알려드립니다.</span>
+            </div>
+            <div class="find-id">
+                <form method="POST" action="findId.php" name="fm" id="fm">
+                    <!-- name-area start -->
+                    <div class="name">
+                        <span class="title-span">이름</span>
+                        <input type="text" class="content" id="name" name="name" placeholder="이름 입력하기" required autocomplete="off">
+                    </div>
+                    <!-- name-area end -->
+
+                    <!-- local-area start -->
+                    <div class="local">
+                        <span class="search-title title-span">지역</span>
+                        <span class="search-area content">
+                            <div class="search">
+                                <select name="depth1" class="select1" id="s1">
+                                    <option value="시/도">시/도</option>
+                                </select><br>
+                                <select name="depth2" class="select2" id="s2"></select>
+                            </div>
+                        </span>
+                    </div>
+                    <!-- local-area end -->
+
+                    <input type="button" class="find-btn" value="다음으로" onclick="check()">
+                </form>
+            </div>
+        </div>
+
+        <!-- 지역 option 동적 추가 및 선택 값 변동 체크 -->
+        <script type="text/javascript" src="local.js"></script>
+
+        <!-- 올바른 정보를 입력했는지 체크 -->
+        <script>
+            function check() {
+                var name = document.getElementById("name").value;
+                var depth1 = document.getElementById("s1").value;
+                var depth2 = document.getElementById("s2").value;
+
+                if(depth1 == "시/도") {
+                    alert("지역을 선택해주세요");
+                    return;
+                } else if(depth2 == "시/군/구") {
+                    alert("지역을 선택해주세요");
+                    return;
+                }
+
+                var result = confirm("이름 : " + name + "\n지역 : " + depth1 + " " + depth2 + "\n위 정보가 맞습니까?");
+
+                if(result) {
+                    document.fm.submit();
+                }
+            }
+        </script>
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </body>
+</html> 

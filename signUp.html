@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ToWW</title>
+
+        <link rel="stylesheet" href="./signUp.css">
+        <link rel="stylesheet" href="./reset.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <!-- kakao-map API -->
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f74e86af168e6d300282d69164941496&libraries=services,clusterer,drawing"></script>
+    </head>
+    
+    <body>
+        <div class="signup-area">
+            <div class="signup-header">
+                <h1 class="title">회원가입</h1>
+            </div>
+            <div class="signup">
+                <form method="POST" action="signUp.php" onsubmit="return signup();" id="signupfm" name="signupfm">
+                    <input type="hidden" name="lat" id="lat" value="">
+                    <input type="hidden" name="lng" id="lng" value="">
+
+                    <!-- name-area start -->
+                    <div class="name">
+                        <span class="title-span">이름</span>
+                        <input type="text" class="content" name="name" id="name" placeholder="이름 입력하기" required autocomplete="off" onchange="input_name()">
+                    </div>
+                    <!-- name-area end -->
+
+                    <!-- local-area start -->
+                    <div class="local">
+                        <span class="search-title title-span">지역</span>
+                        <span class="search-area content">
+                            <div class="search">
+                                <select name="depth1" class="select1" id="s1">
+                                    <option value="시/도">시/도</option>
+                                </select><br>
+                                <select name="depth2" class="select2" id="s2"></select>
+                            </div>
+                        </span>
+                    </div>
+                    <!-- local-area end -->
+
+                    <!-- id-area start -->
+                    <div class="id">
+                        <span class="title-span">아이디</span>
+                        <div class="content">
+                            <input type="text" class="input-id" id="id" name="id" placeholder="아이디 입력하기" required autocomplete="off" onchange="input_id()">
+                            <span href="" class="id-btn" onclick="id_check();">확인</span>
+                            <!--<input type="button" class="id-btn" value="확인">-->
+                        </div>
+                    </div>
+                    <!-- id-area end -->
+
+                    <!--<span class="layer" name="id">아이디 입력하기</span>-->
+
+                    <!-- password-area start -->
+                    <div class="pw">
+                        <span class="title-span">비밀번호</span>
+                        <input type="password" class="reset content" name="pw" id="pw" placeholder="비밀번호 입력하기" required autocomplete="off" onchange="input_pw()">
+                    </div>
+                    <!-- password-area end -->
+
+                    <!-- password-check-area start -->
+                    <div class="pw-ck">
+                        <span class="title-span">비밀번호 확인</span>
+                        <input type="password" class="reset content" name="pw-ck" id="pw_ck" placeholder="비밀번호 재입력하기" required autocomplete="off">
+                    </div>
+                    <!-- password-check-area end -->
+                    
+                    <input type="submit" class="signup-btn" /*onclick="check();"*/ value="시작하기">
+                </form>
+            </div>
+        </div>
+
+        <!-- id-check popup start -->
+        <div id="layer">
+            <a href="#" class="close">Close</a>
+            <div class="input-area">
+                <form method="POST" action="id_check.php">
+                    <div class="input-box">
+                        <input type="text" name="id-check" class="id-check" id="id_check" onkeydown="checked=false;" placeholder="아이디를 입력하세요">
+                        <input type="button" class="check" value="확인">
+                    </div>
+                    <input type="button" value="아이디 사용하기" class="check-btn">
+                </form>
+            </div>
+        </div>
+        <!-- id-check popup end -->
+
+        <script type="text/javascript">
+            //layer popup
+            $(".layer").click(function(event) {
+                event.preventDefault();
+                //$("#layer").css("display", "block");
+                $("#layer").slideDown();
+            })
+
+            $("#layer .close").click(function(event){
+                event.preventDefault();
+
+                $("#layer").fadeOut("slow");
+            })
+        </script>
+
+        <!-- 아이디 중복 확인 -->
+        <script>
+            function id_check() {
+                var userid = $("#id");
+
+                if(userid.val() == '') {
+                    alert('아이디를 입력해주세요!');
+
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "./idCheck.php?userdata="+userid.val(),
+                    data: { "id": userid.val() },
+                    datatype: "json",
+                    success: function (data) {
+                        if(data == "1") {
+                            alert("사용할 수 있는 아이디입니다!");
+                            ID_OK();
+                        } else {
+                            alert("사용할 수 없는 아이디입니다! 다른 아이디를 입력해주세요");
+                            focus.userid;
+                            ID_NO();
+                        }
+                        // alert(data);
+                    }, error:function() {
+                        alert("Error!");
+                    }
+                });
+            }
+
+            function ID_OK() {
+                checked = true;
+            }
+
+            function ID_NO() {
+                checked = false;
+            }
+        </script>
+
+        <!-- map.js -->
+        <script type="text/javascript" src="map.js"></script>
+
+        <!-- 아이디 및 비밀번호 체크 -->
+        <script type="text/javascript" src="check.js"></script>
+
+        <!-- 지역 option 동적 추가 및 선택 값 변동 체크 -->
+        <script type="text/javascript" src="local.js"></script>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
