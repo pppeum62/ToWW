@@ -16,7 +16,6 @@
         body{
             font-family: 'NanumSquare', sans-serif; color:#222; font-size:12px; line-height: 1.5; 
             padding-top: 70px;
-            padding-bottom: 30px;
             background-color: #eeeeee;
         }
         #weather1{
@@ -38,9 +37,15 @@
         }
         #bubble{
             margin-top: 2em;
-            height: 12em;
+            /* height: 12em; */
             background-color: #79aff5;
             border-radius: 0px 20px 20px 20px;
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+        .clothesIcon{
+            width: 100%;
+            padding-top: 2em;
         }
         .divider{
             border: rgb(221, 221, 221) 0.5px solid;
@@ -98,7 +103,8 @@
                 <span id="temp"></span>°C
             </div>
             <p class="gray">
-                <span id="temp_max"></span>°C / <span id="temp_min"></span>°C <br> &nbsp;
+                최고온도 <span id="temp_max"></span>°C / 최저온도 <span id="temp_min"></span>°C <br> &nbsp;
+                체감온도 <span id="feels_like"></span> °C 
             </p>
         </div><!--날씨표시-->
         <div class="col-sm-12">
@@ -108,9 +114,22 @@
                 </div>
                 <div class="col-xs-9" id="bubble">
                     <center class="col-xs-12">
-                        <p>
-                            <span></span>와(과) <span></span>을 추천드려요.
-                        </p>
+                        <span id="dayNight"></span> 엔 다소 <span></span> 것 같아요.<br>
+                        <span></span>와(과) <span></span>을 추천드려요.<br>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/니트.png" class="clothesIcon" id="recommendTop">
+                                <br><span id="recommendTopText"></span>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/홈웨어.png" class="clothesIcon" id="recommendBottom">
+                                <br><span id="recommendBottomText"></span>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/후드.png" class="clothesIcon">
+                                <br>니트
+                            </div>
+                        </div>
                     </center>
                     <!-- <img src="./img/말풍선.png" alt="옷추천2" width="100%"> -->
                 </div>
