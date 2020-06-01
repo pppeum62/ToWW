@@ -1,0 +1,81 @@
+body {
+    background: #f8f8f8;
+}
+
+
+
+.login-area {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.login-area .login-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-area .login {
+    text-align: center;
+}
+
+.login-area .login input {
+    box-sizing: border-box;
+    width: 65vw;
+    height: 6vh;
+    border: none;
+    background-color: #fff;
+    margin: 3px 0;
+    padding: 0 0 0 20px;
+    border-radius: 20px;
+}
+
+.login-area .login input:focus {
+    outline: none;
+}
+
+.login-area .login .reset {
+    font-family: '맑은 고딕';
+    letter-spacing: -1px;
+}
+
+.login-area .login .login-btn {
+    margin-top: 20px;
+    padding: unset;
+    background-color: #79aff5;
+    color: #fff;
+}
+
+.login-area .login-info {
+    text-align: center;
+    margin: 20px;
+}
+
+.login-area .login-info li {
+    position: relative;
+    display: inline;
+    cursor: pointer;
+}
+
+.login-area .login-info li:hover {
+    text-decoration: underline;
+}
+
+.login-area .login-info li:before {
+    content:'';
+    width: 1px;
+    height: 12px;
+    background: #999;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.login-area .login-info li:first-child:before{
+    width: 0;
+    height: 0;
+}
+
+.login-area .login-info li span {
+    padding: 8px;
+}

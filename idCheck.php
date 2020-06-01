@@ -1,15 +1,27 @@
 <?php
-    $id = $_GET['id'];
+    header("Content-type: text/html; charset: utf-8");
 
-    $conn = mysqli_connect('127.0.0.1', 'root', 'mirim2', 'toww');
+    $id = $_REQUEST['id'];
+
+    $conn = mysqli_connect('localhost', 'toww', 'mirimww1!', 'toww');
 
     /* 아이디 중복 확인 */
     $sql = 'select * from members where id="'.$id.'"';
     $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    if(mysqli_num_rows($result) > 0) {
-        echo '<script>alert("중복된 아이디가 있습니다. 다른 아이디를 입력해주세요."); window.close();</script>';
+    $returnStr = "";
+
+    if($row['id'] != $id) {
+        // 사용할 수 있는 아이디일 경우
+        $returnStr = "1";
     } else {
-        echo '<script>alert("사용 가능한 아이디입니다!"); window.close();</script>';
+        // 사용할 수 없는 아이디일 경우
+        $returnStr = "0";
     }
+
+    mysqli_free_result($result);
+    mysqli_close($conn);
+
+    echo $returnStr;
 ?>

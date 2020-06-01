@@ -46,6 +46,8 @@ $s1.on('change', function() {
     $s2.html(html);
 
     console.log(depth1);
+
+    searchPlaces();
 });
 
 $s2.on('change', function() {
@@ -53,6 +55,8 @@ $s2.on('change', function() {
     depth2 = arr;
 
     console.log(depth2);
+
+    searchPlaces();
 });
 
 $s1.change();

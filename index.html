@@ -26,7 +26,6 @@
             border-top-left-radius: 30px;
             border-top-right-radius: 30px;
             padding-bottom: 60px;
-            box-shadow: #dbdbdb 5px -5px 5px;
         }
         #hourly, #weekly{
             background-color: #ecf3fd;
@@ -35,6 +34,18 @@
         #hourly p, #weekly p{
             background-color: rgb(87, 86, 86); 
             color: white;
+        }
+        #bubble{
+            margin-top: 2em;
+            /* height: 12em; */
+            background-color: #79aff5;
+            border-radius: 0px 20px 20px 20px;
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+        .clothesIcon{
+            width: 100%;
+            padding-top: 2em;
         }
         .divider{
             border: rgb(221, 221, 221) 0.5px solid;
@@ -45,6 +56,7 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="apiTest2.js"></script>
+    <script src="daily.js"></script>
 </head>
 <body>
     <!-- 네비게이션바 -->
@@ -53,21 +65,20 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="weather.html">ToWW</a>
+                <a class="navbar-brand" href="index.html">ToWW</a>
             </div>
         
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="divider"></li>
-                    <li><a href="closet.html">MY 스타일 <span class="sr-only">(current)</span></a></li>
-                    <li class="divider"></li>
-                    <li><a href="setting.html">환경설정</a></li>
+                    <li><a href="index.html">오늘의 날씨</a></li>
+                    <li><a href="choose.html">MY 스타일</a></li>
+                    <li><a href="setting.html">환경설정<span class="sr-only">(current)</span></a></li>
                     <li><a href="#">지역설정</a></li>
                     <li><a href="mailto:blueacryl0220@gmail.com ?subject=[ToWW] Feedback for ToWW&body=피드백 감사합니다! 아래에 문의 내용을 적어주세요.">문의하기</a></li>
                 </ul>         
@@ -80,84 +91,87 @@
         <div class="col-sm-12 text-right">
             <h2>오늘의 날씨</h2>
             <p class="gray">
-                업데이트 몇일 몇날
+                업데이트 <span id="month"></span>월 <span id="date"></span>일
             </p>
         </div>
     </div> <!--#weather1-->
-
+    
     <div class="container" id="weather2">
         <div class="col-sm-12 text-center">
-            <h3>
-                <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> &nbsp; 
-                <span id="temp"></span> 도 / <span id="clouds"></span>
-            </h3>
+            <div style = "font-size:4em;">
+                <img src="" alt="날씨아이콘" width="25%" id="icon">
+                <span id="temp"></span>°C
+            </div>
             <p class="gray">
-                최고온도 / 최저온도 <br>
-                미세먼지 () / 초미세먼지 ()
+                최고온도 <span id="temp_max"></span>°C / 최저온도 <span id="temp_min"></span>°C <br> &nbsp;
+                체감온도 <span id="feels_like"></span> °C 
             </p>
         </div><!--날씨표시-->
         <div class="col-sm-12">
             <div class="row">
-                <div class="col-xs-2">
-                    <img src="https://postfiles.pstatic.net/MjAxOTAxMjNfMjUz/MDAxNTQ4MjE1MTYxNTU3.ApPxRpD3VI2q9Vymzphqwc5kBwcXSwZ4rOtkxU7KB8Qg.pIG9TiUqlYy1As6AOKpKr2m621qFOSpnDwZfZFugvj0g.JPEG.ksh20713/SE-dfef9ec0-4d71-4dbe-8827-878f8aa79d8e.jpg?type=w773"
-                    alt="캐릭터" width="100%" class="img-circle">
+                <div class="col-xs-3">
+                    <img src="./img/profile.png" width="100%">
                 </div>
-                <div id="carousel-example-generic" class="carousel slide col-xs-10" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                    </ol>
-                <!--사진은 김수현이 1학년 사진수업때 찍은 사진이고 크기가 안맞아서 중앙으로 안간다-->
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner img-rounded" role="listbox">
-                        <div class="item active">
-                            <img src="https://postfiles.pstatic.net/MjAxOTAxMDFfMjI0/MDAxNTQ2MzI2NzAxMjU5.M1QX8rBPMx7_x09s7Wo8vVmqGbQzLAk12uG5bNjIn5Mg.wVdt8QzZW9eqmK4r6yqsvj1eGN1TPotAdQ244hUur0Qg.JPEG.ksh20713/DSC_0079.JPG?type=w773" 
-                            alt="옷추천1">
-                            <div class="carousel-caption">
-                            요건 어때?
+                <div class="col-xs-9" id="bubble">
+                    <center class="col-xs-12">
+                        <span id="dayNight"></span> 엔 다소 <span></span> 것 같아요.<br>
+                        <span></span>와(과) <span></span>을 추천드려요.<br>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/니트.png" class="clothesIcon" id="recommendTop">
+                                <br><span id="recommendTopText"></span>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/홈웨어.png" class="clothesIcon" id="recommendBottom">
+                                <br><span id="recommendBottomText"></span>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="./img/clothes/후드.png" class="clothesIcon">
+                                <br>니트
                             </div>
                         </div>
-                        <div class="item">
-                            <img src="https://postfiles.pstatic.net/MjAxOTAxMDFfMTMy/MDAxNTQ2MzI2NzAxNjU5.R82NZU4H8VTthQHMpF4xc4mOwS15KTZ-rvIEzcL7NM8g.7Ts38w4KSgHoouSTvQcYWs-Q2sTb9mXzL5Ze7pADoCgg.JPEG.ksh20713/DSC_0114.JPG?type=w773" 
-                            alt="옷추천2">
-                            <div class="carousel-caption">
-                            이건
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img src="https://postfiles.pstatic.net/MjAxOTAxMDFfMTUg/MDAxNTQ2MzI2Njk4Mzg4.YhCwzcAFRHOQKZBuFLLhgxv8EyN4Fmta_Edb6ETHkhwg.fnsBE7Jk07hYkMmiQ_0brWp9HMwajKs4GAdXdNLftVkg.JPEG.ksh20713/DSC_0148.JPG?type=w773" 
-                            alt="옷추천3">
-                            <div class="carousel-caption">
-                            니 입고 싶은거 입어라.
-                            </div>
-                        </div>
-                    </div>  
-                </div><!--캐러멜-->
+                    </center>
+                    <!-- <img src="./img/말풍선.png" alt="옷추천2" width="100%"> -->
+                </div>
             </div> <!--row-->
         </div>
         <div class="col-sm-12 gray">
             <h2>시간별</h2>
             <div class="row img-rounded" id="hourly">
                 <div class="col-xs-3 text-center">
-                    15시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextTime01"></span>
+                    <p><span>
+                            <img src="" alt="날씨아이콘" id="timeIcon01">
+                            <span id="nextDesc01"></span>
+                        </span>&nbsp;<span id="nextTemp01"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    16시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextTime02"></span>
+                    <p><span>
+                            <img src="" alt="날씨아이콘" id="timeIcon02">
+                            <span id="nextDesc02"></span>
+                        </span>&nbsp;
+                        <span id="nextTemp02"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    17시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextTime03"></span>
+                    <p><span>
+                            <img src="" alt="날씨아이콘" id="timeIcon03">
+                            <span id="nextDesc03"></span>
+                        </span>&nbsp;
+                        <span id="nextTemp03"></span>°C</p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    18시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextTime04"></span>
+                    <p><span>
+                            <img src="" alt="날씨아이콘" id="timeIcon04">
+                            <span id="nextDesc04"></span>
+                        </span>&nbsp;
+                        <span id="nextTemp04"></span>°C
+                    </p>
                     가디건
                 </div>
             </div>
@@ -166,23 +180,46 @@
             <h2>요일별</h2>
             <div class="row img-rounded" id="weekly">
                 <div class="col-xs-3 text-center">
-                    15시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextDay01"></span>
+                    <p>
+                        <span>
+                            <img src="" alt="날씨아이콘" id="dayIcon01">                            <span id="dayDesc01"></span>
+                            </span>&nbsp;
+                            <span id="dayTemp01"></span>°C
+                        </p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    16시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextDay02"></span>
+                    <p>
+                        <span>
+                            <img src="" alt="날씨아이콘" id="dayIcon02">    
+                            <span id="dayDesc02"></span>
+                        </span>&nbsp;
+                        <span id="dayTemp02"></span>°C
+                    </p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    17시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextDay03"></span>
+                    <p>
+                        <span>
+                            <img src="" alt="날씨아이콘" id="dayIcon03">    
+                            <span id="dayDesc03"></span>
+                        </span>&nbsp;
+                        <span id="dayTemp03"></span>°C
+                    </p>
                     가디건
                 </div>
                 <div class="col-xs-3 text-center">
-                    18시
-                    <p><span class="glyphicon glyphicon-certificate">맑음</span>&nbsp;12°C</p>
+                    <span id="nextDay04"></span>
+                    <p>
+                        <span>
+                            <img src="" alt="날씨아이콘" id="dayIcon04">    
+                            <span id="dayDesc04"></span>
+                        </span>&nbsp;
+                        <span id="dayTemp04"></span>°C
+                    </p>
                     가디건
                 </div>
             </div>

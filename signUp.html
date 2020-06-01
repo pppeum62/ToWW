@@ -5,88 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ToWW</title>
 
+        <link rel="stylesheet" href="./signUp.css">
         <link rel="stylesheet" href="./reset.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
 
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <!-- kakao-map API -->
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f74e86af168e6d300282d69164941496&libraries=services,clusterer,drawing"></script>
     </head>
-    <style>
-        .signup-area { position: absolute; top: 50%; transform: translateY(-50%); }
-        .signup-area .signup-header { text-align: center; margin-bottom: 10px; }
-        .signup-area .signup { text-align: center; margin: 10vw; }
-
-        .signup-area .signup .title-span { display: flex; align-items: center; box-sizing: border-box; padding: 0 0 0 20px; width: 25vw; height: 6vh; background-color: #eee; font-weight: bold; }
-        .signup-area .signup .content { box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; }
-
-        /* name */
-        .signup-area .signup .name { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .name .title-span { border-top-left-radius: 20px; }
-        .signup-area .signup .name .content { border-top-right-radius: 20px; }
-
-        /* local */
-        .signup-area .signup .local { width: 70vw; height: 12vh; display: contents; }
-        .signup-area .signup .local .title-span { height: 12vh; border-bottom-left-radius: 20px; border-top: 1px solid #ccc; }
-        .signup-area .signup .local .content { display: flex; align-items: center; height: 12vh; border-bottom-right-radius: 20px; border-top: 1px solid #ccc; }
-
-        /* id */
-        .signup-area .signup .id { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .id .title-span { margin-top: 6px; border-top-left-radius: 20px; }
-        .signup-area .signup .id .content { margin-top: 6px; border-top-right-radius: 20px; display: flex; align-items: center; }
-        .signup-area .signup .id .content .input-id { border: none; width: 30vw; background: none; }
-        .signup-area .signup .id .content .id-btn { border: none; background-color: #ccc; padding: 1px 6px; border-radius: 20px; }
-
-        /* pw */
-        .signup-area .signup .pw { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .pw .title-span { border-top: 1px solid #ccc; }
-        .signup-area .signup .pw .content { border-top: 1px solid #ccc; }
-
-        /* pw-ck */
-        .signup-area .signup .pw-ck { width: 70vw; height: 6vh; display: contents; }
-        .signup-area .signup .pw-ck .title-span { border-bottom-left-radius: 20px; border-top: 1px solid #ccc; }
-        .signup-area .signup .pw-ck .content { border-bottom-right-radius: 20px; border-top: 1px solid #ccc; }
-
-        .signup-area .signup form { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; }
-        .signup-area .signup input:focus { outline: none; }
-        
-        /* signup-btn */
-        .signup-area .signup .signup-btn { width: 70vw; height: 6vh; border: none; margin: 70px 0 0 0; padding: 0 10px; border-radius: 20px; background-color: #79aff5; color: #fff; }
-
-        /* local search */
-        .search { text-align: center; position: absolute; }
-        .search .select1 { margin-bottom: 3px; }
-        .search .select2 { margin-top: 3px; }
-
-        select { font-size: 15px; width: 140px; height: 28px; border-radius: 20px; padding: 5px; }
-
-        /* layer */
-        .signup-area .signup .layer { color: gray; font-weight: normal; box-sizing: border-box; width: 45vw; height: 6vh; border: none; background-color: #eee; padding: 0 10px; margin-top: 6px; }
-
-        /* layer popup */
-        #layer { display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 30vh; width: 60vw; background-color: #fff; border: 3px solid #bbb; }
-        #layer .close{ position: absolute; right: 15px; top: 15px; background: #bbb; padding: 1px 6px; color: #fff; z-index: 3; }
-        #layer .close:hover{ text-decoration: underline; }
-        #layer .input-area { left: 50%; top: 50%; transform: translate(-50%, -50%); position: absolute; text-align: center; }
-        #layer .input-box { width: 50vw; height: 5vh; border: 1px solid #ddd; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-top: 40px; }
-        #layer .id-check { width: 35vw; height: 4vh; border: none; box-sizing: border-box; }
-        #layer .id-check:focus { outline: none; }
-        #layer .check { background-color: #ddd; border: none; border-radius: 20px; padding: 1px 6px; cursor: pointer; }
-        #layer .check-btn { border: none; background-color: #ddd; width: 30vw; height: 5vh; border-radius: 20px; margin-top: 40px; }
-
-        .reset { font-family: '맑은 고딕'; letter-spacing: -1px; }
-    </style>
+    
     <body>
         <div class="signup-area">
             <div class="signup-header">
                 <h1 class="title">회원가입</h1>
             </div>
             <div class="signup">
-                <form method="POST" action="signUp.php" onsubmit="return signup()">
+                <form method="POST" action="signUp.php" onsubmit="return signup();" id="signupfm" name="signupfm">
+                    <input type="hidden" name="lat" id="lat" value="">
+                    <input type="hidden" name="lng" id="lng" value="">
 
                     <!-- name-area start -->
                     <div class="name">
                         <span class="title-span">이름</span>
-                        <input type="text" class="content" name="name" placeholder="이름 입력하기" required autocomplete="off">
+                        <input type="text" class="content" name="name" id="name" placeholder="이름 입력하기" required autocomplete="off" onchange="input_name()">
                     </div>
                     <!-- name-area end -->
 
@@ -108,8 +51,8 @@
                     <div class="id">
                         <span class="title-span">아이디</span>
                         <div class="content">
-                            <input type="text" class="input-id" id="id" name="id" placeholder="아이디 입력하기" required autocomplete="off">
-                            <a href="javascript:check_ID()" class="id-btn">확인</a>
+                            <input type="text" class="input-id" id="id" name="id" placeholder="아이디 입력하기" required autocomplete="off" onchange="input_id()">
+                            <span href="" class="id-btn" onclick="id_check();">확인</span>
                             <!--<input type="button" class="id-btn" value="확인">-->
                         </div>
                     </div>
@@ -120,7 +63,7 @@
                     <!-- password-area start -->
                     <div class="pw">
                         <span class="title-span">비밀번호</span>
-                        <input type="password" class="reset content" name="pw" id="pw" placeholder="비밀번호 입력하기" required autocomplete="off">
+                        <input type="password" class="reset content" name="pw" id="pw" placeholder="비밀번호 입력하기" required autocomplete="off" onchange="input_pw()">
                     </div>
                     <!-- password-area end -->
 
@@ -131,7 +74,7 @@
                     </div>
                     <!-- password-check-area end -->
                     
-                    <input type="submit" class="signup-btn" onclick="check_password()"; value="시작하기">
+                    <input type="submit" class="signup-btn" /*onclick="check();"*/ value="시작하기">
                 </form>
             </div>
         </div>
@@ -165,6 +108,50 @@
                 $("#layer").fadeOut("slow");
             })
         </script>
+
+        <!-- 아이디 중복 확인 -->
+        <script>
+            function id_check() {
+                var userid = $("#id");
+
+                if(userid.val() == '') {
+                    alert('아이디를 입력해주세요!');
+
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "./idCheck.php?userdata="+userid.val(),
+                    data: { "id": userid.val() },
+                    datatype: "json",
+                    success: function (data) {
+                        if(data == "1") {
+                            alert("사용할 수 있는 아이디입니다!");
+                            ID_OK();
+                        } else {
+                            alert("사용할 수 없는 아이디입니다! 다른 아이디를 입력해주세요");
+                            focus.userid;
+                            ID_NO();
+                        }
+                        // alert(data);
+                    }, error:function() {
+                        alert("Error!");
+                    }
+                });
+            }
+
+            function ID_OK() {
+                checked = true;
+            }
+
+            function ID_NO() {
+                checked = false;
+            }
+        </script>
+
+        <!-- map.js -->
+        <script type="text/javascript" src="map.js"></script>
 
         <!-- 아이디 및 비밀번호 체크 -->
         <script type="text/javascript" src="check.js"></script>
