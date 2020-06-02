@@ -5,42 +5,43 @@ var cityName = new String("Seoul");
 
 var lat, lon, latlonURL;
 
-getLatLon();
-function getLatLon(lati,longi){
-    lat = lati;
-    lon = longi;
-    latlonURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+
-    "&appid=3a9524425075707b189261d047cd31c8&units=metric";
+function getLatLon(lat,lon){
+
+    console.log(lat);
+    console.log(lon);
+
+    latlonURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid=3a9524425075707b189261d047cd31c8&units=metric";
 }
 
 // var latlonURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+
 // "&appid=3a9524425075707b189261d047cd31c8&units=metric";
 
-// var dailyURL = "http://api.openweathermap.org/data/2.5/forecast?q="
-//     +cityName+"&appid=3a9524425075707b189261d047cd31c8&units=metric";
+var dailyURL = "http://api.openweathermap.org/data/2.5/forecast?q="
+    +cityName+"&appid=3a9524425075707b189261d047cd31c8&units=metric";
 
 var clothes = {
-    'outer' : ['가디건','조끼','점퍼','자켓','플리스','코트','숏패딩','롱패딩']
-    ,'wearTop' : ['민소매','반팔티셔츠','셔츠','블라우스','긴팔티셔츠','맨투맨','후드','폴라티','니트']
-    ,'bottom' : ['치마','긴치마','레깅스','반바지','면바지','청바지']
-    ,'etc':['원피스','트레이닝','홈웨어']
+    'outer' : ['야상','점퍼','자켓','플리스','코트','숏패딩','롱패딩']
+    ,'wearTop' : ['나시','민소매','반팔티셔츠','셔츠','블라우스','긴팔티셔츠','맨투맨','후드','폴라티']
+    ,'bottom' : ['치마', '치마바지','긴치마','레깅스','반바지','면바지','긴바지']
 };
 
 var pickClothes;
 pickClothes = function(temp){
+    //Math.floor(Math.random() * (max - min + 1)) + min;
     var number = 0;
+    //alert(temp);
 
     if(temp>27){
-        number=Math.floor(Math.random() * (1 - 2 + 1)) + 1;;
+        number=Math.floor(Math.random() * (0 - 2 + 1)) + 0;;
     }
     else if(temp>=23&&temp<=26){
         number=Math.floor(Math.random() * (2 - 4 + 1)) + 2;;
     }
     else if(temp>=21&&temp<=23){
-        number=Math.floor(Math.random() * (3 - 6 + 1)) + 3;;
+        number=Math.floor(Math.random() * (3 - 5 + 1)) + 2;;
     }
     else if(temp>=18&&temp<=20){
-        number=Math.floor(Math.random() * (2 - 4 + 1)) + 2;;
+        number=Math.floor(Math.random() * (2 - 5 + 1)) + 2;;
     }
     else if(temp>=15&&temp<=17){
         number=Math.floor(Math.random() * (4 - 6 + 1)) + 4;;
@@ -58,9 +59,11 @@ pickClothes = function(temp){
         number=6;
     }
     else{
-        number = 4;  
+        number = Math.floor(Math.random() * 8);  
     }
-        
+    
+    //alert(number);
+    
     return number;
 }
 
@@ -76,6 +79,7 @@ stringCut02 = function(a){
     
     return a.substring(5,7)+"월"+a.substring(8,10)+"일";
 }
+
 //새벽, 아침, 낮 저녁
 var dayNight;
 dayNight = function(a){
@@ -114,13 +118,15 @@ dayNight = function(a){
 }
 
 $.ajax({
-    url: latlonURL,
+    url: dailyURL,
     dataType: "json",
     type: "GET",
     async: "false",
 
     success: function(resp){
         //console.log("날씨 이미지 : "+ resp.list[0].weather[0].icon);
+
+        getLatLon();
 
         //시간별
         $('#nextTime01').html(stringCut01(resp.list[3].dt_txt));
@@ -166,27 +172,13 @@ $.ajax({
 
         $('#dayNight').html(dayNight(stringCut01(resp.list[4].dt_txt)));
         
+        
         var clothesNumber = pickClothes(resp.list[2].main.feels_like);   
 
         $("#recommendTop").attr("src","./img/clothes/" +clothes.wearTop[clothesNumber]+ ".png");
         $("#recommendTopText").html(clothes.wearTop[clothesNumber]);
         $("#recommendBottom").attr("src","./img/clothes/" +clothes.bottom[clothesNumber]+ ".png");
         $("#recommendBottomText").html(clothes.bottom[clothesNumber]);
-
-
-        //시간별 옷 추천
-        //$("#nextRecommend01").html(clothes.wearTop[pickClothes(resp.list[3].main.feels_like)]);
-        $("#nextRecommend01").html("가나다");
-        $("#nextRecommend02").html(clothes.wearTop[pickClothes(resp.list[4].main.feels_like)]);
-        $("#nextRecommend03").html(clothes.wearTop[pickClothes(resp.list[5].main.feels_like)]);
-        $("#nextRecommend04").html(clothes.wearTop[pickClothes(resp.list[6].main.feels_like)]);
-
-        //날짜별 옷 추천
-        $("#dayRecommend01").html(clothes.wearTop[pickClothes(resp.list[10].main.feels_like)]);
-        $("#dayRecommend02").html(clothes.wearTop[pickClothes(resp.list[18].main.feels_like)]);
-        $("#dayRecommend03").html(clothes.wearTop[pickClothes(resp.list[26].main.feels_like)]);
-        $("#dayRecommend04").html(clothes.wearTop[pickClothes(resp.list[34].main.feels_like)]);
-
     }
     
 })

@@ -32,9 +32,8 @@
             background-color: #ecf3fd;
             box-shadow: #eeeeee 5px 5px 5px;
         }
-        #hourly p, #weekly p{
-            background-color: rgb(87, 86, 86); 
-            color: white;
+        #hourly p, #weekly p{ 
+            color: black;
         }
         #bubble{
             margin-top: 2em;
@@ -63,18 +62,21 @@
     <?php
     $id = 'testid4';
     $conn = mysqli_connect('localhost', 'toww', 'mirimww1!', 'toww');
-    $sql = 'select id, latitude, longitude from members where id="'.$id.'"';
+    $sql = 'select id, latitude, longitude from members where id="'.$id.'";';
     $result = mysqli_query($conn, $sql);
+    
     if(mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
         $lat = $row['latitude'];
         $lon = $row['longitude'];
     } else {
         $lat=37.466537;
         $lon=126.932908; 
     }
-    ?>
-    <script language='javascript'> getLatLon("37.466537","126.932908") </script>
-    <?php
+
+    echo '<script>getLatLon('.$lat.','.$lon.');</script>';
+
     mysqli_close($conn);
     ?>
 
