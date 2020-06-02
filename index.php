@@ -98,7 +98,7 @@
             <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.html">오늘의 날씨</a></li>
-                    <li><a href="closet.html">MY 스타일</a></li>
+                    <li><a href="choose.html">MY 스타일</a></li>
                     <li><a href="setting.html">환경설정<span class="sr-only">(current)</span></a></li>
                     <li><a href="#">지역설정</a></li>
                     <li><a href="mailto:blueacryl0220@gmail.com ?subject=[ToWW] Feedback for ToWW&body=피드백 감사합니다! 아래에 문의 내용을 적어주세요.">문의하기</a></li>
