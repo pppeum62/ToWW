@@ -1,7 +1,17 @@
 var cityName = new String("Seoul");
 
-// var lat=0;
-// var lon=0;
+// var lat=37.466537;
+// var lon=126.932908;
+
+var lat, lon, latlonURL;
+
+function getLatLon(lat,lon){
+
+    console.log(lat);
+    console.log(lon);
+
+    latlonURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid=3a9524425075707b189261d047cd31c8&units=metric";
+}
 
 // var latlonURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+
 // "&appid=3a9524425075707b189261d047cd31c8&units=metric";
@@ -115,6 +125,8 @@ $.ajax({
 
     success: function(resp){
         //console.log("날씨 이미지 : "+ resp.list[0].weather[0].icon);
+
+        getLatLon();
 
         //시간별
         $('#nextTime01').html(stringCut01(resp.list[3].dt_txt));
