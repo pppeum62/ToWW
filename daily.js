@@ -1,18 +1,28 @@
 var cityName = new String("Seoul");
 
-var lat=37.466537;
-var lon=126.932908;
+// var lat=37.466537;
+// var lon=126.932908;
 
-var latlonURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+
-"&appid=3a9524425075707b189261d047cd31c8&units=metric";
+var lat, lon, latlonURL;
+
+getLatLon();
+function getLatLon(lati,longi){
+    lat = lati;
+    lon = longi;
+    latlonURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+
+    "&appid=3a9524425075707b189261d047cd31c8&units=metric";
+}
+
+// var latlonURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+
+// "&appid=3a9524425075707b189261d047cd31c8&units=metric";
 
 // var dailyURL = "http://api.openweathermap.org/data/2.5/forecast?q="
 //     +cityName+"&appid=3a9524425075707b189261d047cd31c8&units=metric";
 
 var clothes = {
-    'outer' : ['가디건','조끼','야상','점퍼','자켓','플리스','코트','숏패딩','롱패딩']
+    'outer' : ['가디건','조끼','점퍼','자켓','플리스','코트','숏패딩','롱패딩']
     ,'wearTop' : ['민소매','반팔티셔츠','셔츠','블라우스','긴팔티셔츠','맨투맨','후드','폴라티','니트']
-    ,'bottom' : ['치마', '치마바지','긴치마','레깅스','반바지','면바지','청바지']
+    ,'bottom' : ['치마','긴치마','레깅스','반바지','면바지','청바지']
     ,'etc':['원피스','트레이닝','홈웨어']
 };
 
