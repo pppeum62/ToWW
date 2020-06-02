@@ -3,7 +3,7 @@ var cityName = new String("Seoul");
 // var lat=37.466537;
 // var lon=126.932908;
 
-var lat, lon, latlonURL;
+var latlonURL;
 
 function getLatLon(lat,lon){
 
@@ -126,7 +126,7 @@ $.ajax({
     success: function(resp){
         //console.log("날씨 이미지 : "+ resp.list[0].weather[0].icon);
 
-        getLatLon();
+        // getLatLon();
 
         //시간별
         $('#nextTime01').html(stringCut01(resp.list[3].dt_txt));
