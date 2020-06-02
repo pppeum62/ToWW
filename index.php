@@ -32,8 +32,8 @@
             background-color: #ecf3fd;
             box-shadow: #eeeeee 5px 5px 5px;
         }
-        #hourly p, #weekly p{ 
-            color: black;
+        #hourly p, #weekly p{
+            color: #959595;
         }
         #bubble{
             margin-top: 2em;
@@ -62,21 +62,19 @@
     <?php
     $id = 'testid4';
     $conn = mysqli_connect('localhost', 'toww', 'mirimww1!', 'toww');
-    $sql = 'select id, latitude, longitude from members where id="'.$id.'";';
+    $sql = 'select id, latitude, longitude from members where id="'.$id.'"';
     $result = mysqli_query($conn, $sql);
-    
     if(mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
         $lat = $row['latitude'];
         $lon = $row['longitude'];
     } else {
         $lat=37.466537;
         $lon=126.932908; 
     }
-
-    echo '<script>getLatLon('.$lat.','.$lon.');</script>';
-
+    ?>
+    <script language="text/javascript" src="daily.js"> 
+        <script>getLatLon('37.466537','126.932908'); </script>
+    <?php
     mysqli_close($conn);
     ?>
 
@@ -165,7 +163,6 @@
                             <img src="" alt="날씨아이콘" id="timeIcon01" width="100%">
                             <span id="nextDesc01"></span>
                         </span>&nbsp;<span id="nextTemp01"></span>°C</p>
-                    <span id="nextRecommend01"></span>
                 </div>
                 <div class="col-xs-3 text-center">
                     <span id="nextTime02"></span>
@@ -174,7 +171,6 @@
                             <span id="nextDesc02"></span>
                         </span>&nbsp;
                         <span id="nextTemp02"></span>°C</p>
-                    <span id="nextRecommend02"></span>
                 </div>
                 <div class="col-xs-3 text-center">
                     <span id="nextTime03"></span>
@@ -183,7 +179,6 @@
                             <span id="nextDesc03"></span>
                         </span>&nbsp;
                         <span id="nextTemp03"></span>°C</p>
-                    <span id="nextRecommend03"></span>
                 </div>
                 <div class="col-xs-3 text-center">
                     <span id="nextTime04"></span>
@@ -193,7 +188,6 @@
                         </span>&nbsp;
                         <span id="nextTemp04"></span>°C
                     </p>
-                    <span id="nextRecommend04"></span>
                 </div>
             </div>
         </div>
@@ -205,11 +199,11 @@
                     <p>
                         <span>
                             <img src="" alt="날씨아이콘" id="dayIcon01" width="100%">                            
-                            <span id="dayDesc01"></span>
-                            </span>&nbsp;
-                            <span id="dayTemp01"></span>°C
-                        </p>
-                    <span id="dayRecommend01"></span>
+                            <span id="dayDesc01">
+                        </span>
+                        </span>&nbsp;
+                        <span id="dayTemp01"></span>°C
+                    </p>
                 </div>
                 <div class="col-xs-3 text-center">
                     <span id="nextDay02"></span>
@@ -220,7 +214,6 @@
                         </span>&nbsp;
                         <span id="dayTemp02"></span>°C
                     </p>
-                    <span id="dayRecommend02"></span>
                 </div>
                 <div class="col-xs-3 text-center">
                     <span id="nextDay03"></span>
@@ -231,7 +224,6 @@
                         </span>&nbsp;
                         <span id="dayTemp03"></span>°C
                     </p>
-                    <span id="dayRecommend03"></span>
                 </div>
                 <div class="col-xs-3 text-center">
                     <span id="nextDay04"></span>
@@ -242,7 +234,6 @@
                         </span>&nbsp;
                         <span id="dayTemp04"></span>°C
                     </p>
-                    <span id="dayRecommend04"></span>
                 </div>
             </div>
         </div>
